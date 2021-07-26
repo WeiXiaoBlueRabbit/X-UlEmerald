@@ -75,28 +75,28 @@ public class GameFrame extends JFrame {
                 //松开后恢复按键值，方便以后进行判断
                 switch (e.getKeyCode()){
                     case KeyEvent.VK_UP :
-                        key_press.setKey_up(true);
+                        key_press.setKey_up(false);
                         break;
                     case KeyEvent.VK_DOWN:
-                        key_press.setKey_down(true);
+                        key_press.setKey_down(false);
                         break;
                     case KeyEvent.VK_LEFT:
-                        key_press.setKey_left(true);
+                        key_press.setKey_left(false);
                         break;
                     case KeyEvent.VK_RIGHT:
-                        key_press.setKey_right(true);
+                        key_press.setKey_right(false);
                         break;
                     case KeyEvent.VK_Z:
-                        key_press.setKey_z(true);
+                        key_press.setKey_z(false);
                         break;
                     case KeyEvent.VK_X:
-                        key_press.setKey_x(true);
+                        key_press.setKey_x(false);
                         break;
                     case KeyEvent.VK_ENTER:
-                        key_press.setKey_enter(true);
+                        key_press.setKey_enter(false);
                         break;
                     case KeyEvent.VK_BACK_SPACE:
-                        key_press.setKey_backspace(true);
+                        key_press.setKey_backspace(false);
                         break;
 
                     default:
