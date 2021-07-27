@@ -6,7 +6,7 @@ import content.poke.poke_basic.WildPoke;
 public class PokeBulbasaur extends WildPoke {
 
 
-    public PokeBulbasaur(int level, int type, int status, int nature, int learn_point) {
-        super(level, type, status, nature, learn_point);
+    public PokeBulbasaur(int level, int type, int status, int nature, int learn_point,int value) {
+        super(level, type, status, nature, learn_point, value);
     }
 }

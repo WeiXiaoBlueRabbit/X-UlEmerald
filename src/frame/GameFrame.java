@@ -1,6 +1,9 @@
 package frame;
 
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -16,9 +19,38 @@ public class GameFrame extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  //窗体退出方式
         this.setSize(500,500);  //窗体大小
 
-        GamePanel panel = new GamePanel();  //创建一个面板，即图片,在Java中只有用new创建实例之后，程序才会分配内存给它
+        JPanel panel = new JPanel(){        //创建一个面板，即图片,在Java中只有用new创建实例之后，程序才会分配内存给它
+            @Override
+            public void paint(Graphics g) {
+                super.paint(g);  //覆写必须要写super来调用父类方法
+                Image image = new ImageIcon("src/resources/image/poke.jpg").getImage();  //加载图片
+                g.drawImage( image,0,0,getWidth(),getHeight(),null);  //图片在窗体中的大小
+            }
+        };
         this.add(panel);  //将上面创建出的实例加入到窗体中
         this.setVisible(true);   //窗体是否可见，true为可见
+
+        this.addComponentListener(new ComponentListener() {
+            @Override
+            public void componentResized(ComponentEvent e) {
+                panel.repaint();
+            }
+
+            @Override
+            public void componentMoved(ComponentEvent e) {
+
+            }
+
+            @Override
+            public void componentShown(ComponentEvent e) {
+
+            }
+
+            @Override
+            public void componentHidden(ComponentEvent e) {
+
+            }
+        });
 
         /*在窗体中添加键盘监听事件，直接传入一个键盘监听实例
          * 底下的三个覆写是自动添加的，留着就行
