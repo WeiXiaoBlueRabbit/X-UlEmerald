@@ -19,7 +19,7 @@ public class GameFrame extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  //窗体退出方式
         this.setSize(500,500);  //窗体大小
 
-        JPanel panel = new JPanel(){        //创建一个面板，即图片,在Java中只有用new创建实例之后，程序才会分配内存给它
+        JPanel panel = new JPanel(){        //创建一个面板，即图片,也可视为存放图片的容器，在Java中只有用new创建实例之后，程序才会分配内存给它
             @Override
             public void paint(Graphics g) {
                 super.paint(g);  //覆写必须要写super来调用父类方法
