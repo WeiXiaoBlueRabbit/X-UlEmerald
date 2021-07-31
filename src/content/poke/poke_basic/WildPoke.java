@@ -33,12 +33,7 @@ public class WildPoke extends PokeBasic{
     int EV_SPDefense;
     int EV_Speed;
 
-    int learn_HP;        //学习力,击败宝可梦后获得的努力值
-    int learn_Attack;
-    int learn_Defense;
-    int learn_SPAttack;
-    int learn_SPDefense;
-    int learn_Speed;
+    int learn_point;        //学习力,击败宝可梦后获得的努力值
 
     //招式
     int move_1;
@@ -46,13 +41,13 @@ public class WildPoke extends PokeBasic{
     int move_3;
     int move_4;
 
-    public WildPoke(int level, int type, int status, int nature, int learn_point, int value){
+    public WildPoke(int level, int type, int status, int nature, int learn_point){
 
         this.setLevel(level);
         this.setType(type);
         this.setStatus(status);
         this.setNature(nature);
-        this.setLearn_point(learn_point,value);
+        this.setLearn_point(learn_point);
 
         this.SetStat(1,1,1,1,1,1); //暂定
         this.SetIV(0,0,0,0,0,0);           //暂定
@@ -193,38 +188,12 @@ public class WildPoke extends PokeBasic{
         }
     }
 
-/*
-    *这个好像没什么用？
-
-    public int getLearn_point(int learn_point_type) {
-
+    public int getLearn_point() {
+        return learn_point;
     }
-*/
 
-    public void setLearn_point(int learn_point_type,int value) {
-        switch (learn_point_type){
-            case PokeBasic.learn_HP:
-                this.learn_HP = value;
-                break;
-            case PokeBasic.learn_Attack:
-                this.learn_Attack = value;
-                break;
-            case PokeBasic.learn_Defense:
-                this.learn_Defense = value;
-                break;
-            case PokeBasic.learn_SPAttack:
-                this.learn_SPAttack = value;
-                break;
-            case PokeBasic.learn_SPDefense:
-                this.learn_SPDefense = value;
-                break;
-            case PokeBasic.learn_Speed:
-                this.learn_Speed = value;
-                break;
-
-            default:
-                break;
-        }
+    public void setLearn_point(int learn_point) {
+        this.learn_point = learn_point;
     }
 
     public int getMove(int slot) {
