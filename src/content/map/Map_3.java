@@ -9,8 +9,8 @@ import java.awt.*;
 
 @IMap(mapName = "map_3", LeftLink = "map_1")
 public class Map_3 extends MapBase{
-    private int x = 0;
-    private int y = 0;
+    private int x = 200;
+    private int y = 200;
 
     Image image = Common.getImage("poke.jpg");
 

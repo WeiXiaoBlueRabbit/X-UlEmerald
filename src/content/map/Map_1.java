@@ -10,8 +10,8 @@ import java.awt.*;
 @IMap(mapName = "map_1", UpLink = "map_2", RightLink = "map_3")
 public class Map_1 extends MapBase{
 
-    private int x = 1;
-    private int y = 1;
+    private int x = 100;
+    private int y = 100;
 
     Image image = Common.getImage("map_1.jpg");
 
