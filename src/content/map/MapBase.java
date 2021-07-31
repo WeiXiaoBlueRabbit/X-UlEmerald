@@ -12,7 +12,7 @@ import java.awt.*;
 /**
  * 位于src/content/map且继承了MapBase的类可以在被src/content/map/generator/MapGenerator.java文件检测到
  * 目前出现问题的是下面的mapMove()方法，但推测出drawImage里面的if判断也全部无效
- * 
+ *
  * 建议先看src/common/EntityAttribute.java中我对注解的解释之后再看下面的代码
  * */
 public class MapBase implements IDrawImage {
