@@ -7,7 +7,7 @@ import frame.Constant;
 
 import java.awt.*;
 
-@IMap(mapName = "map_3")
+@IMap(mapName = "map_3", LeftLink = "map_1")
 public class Map_3 extends MapBase{
     private int x = 0;
     private int y = 0;
