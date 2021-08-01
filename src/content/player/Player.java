@@ -31,6 +31,14 @@ public class Player extends EntityAttribute {
         this.playerLocation = playerLocation;
     }
 
+    public PlayerState getPlayerState() {
+        return playerState;
+    }
+
+    public void setPlayerState(PlayerState playerState) {
+        this.playerState = playerState;
+    }
+
     /**
      * 覆写action方法从而实现玩家的动作行为
      * */

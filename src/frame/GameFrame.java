@@ -1,6 +1,7 @@
 package frame;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.List;
@@ -17,7 +18,14 @@ public class GameFrame extends JFrame {
 
         this.setTitle("poke");  //窗口标题
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  //窗体退出方式
-        this.setSize(817,849);  //窗体大小
+        this.setResizable(false);//固定窗体
+
+        //获取整个屏幕大小
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+
+        //获取屏幕边界，其中的bottom为底部任务栏高度
+        Insets screenInsets = Toolkit.getDefaultToolkit().getScreenInsets(this.getGraphicsConfiguration());
+        this.setSize(screenSize.width,screenSize.height - screenInsets.bottom);  //窗体大小
 
         this.init();
 

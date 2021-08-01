@@ -35,6 +35,11 @@ public class MapBase implements IDrawImage {
                     IMap ann = anMap.getClass().getAnnotation(IMap.class);
                     if (!ann.mapName().equals(map.UpLink()))
                         continue;
+
+                    if (anMap.isPositionInit() == false){
+                        anMap.setY(-map.height());
+                        anMap.positionInit();
+                    }
                     g.drawImage(anMap.getImage(), anMap.getX(), anMap.getY(), ann.width(), ann.height(), null);
                 }
             }
@@ -44,6 +49,11 @@ public class MapBase implements IDrawImage {
                     IMap ann = anMap.getClass().getAnnotation(IMap.class);
                     if (!ann.mapName().equals(map.DownLink()))
                         continue;
+
+                    if (anMap.isPositionInit() == false){
+                        anMap.setY(-map.height());
+                        anMap.positionInit();
+                    }
                     g.drawImage(anMap.getImage(), anMap.getX(), anMap.getY(), ann.width(), ann.height(), null);
                 }
             }
@@ -53,6 +63,11 @@ public class MapBase implements IDrawImage {
                     IMap ann = anMap.getClass().getAnnotation(IMap.class);
                     if (!ann.mapName().equals(map.LeftLink()))
                         continue;
+
+                    if (anMap.isPositionInit() == false){
+                        anMap.setY(-map.height());
+                        anMap.positionInit();
+                    }
                     g.drawImage(anMap.getImage(), anMap.getX(), anMap.getY(), ann.width(), ann.height(), null);
                 }
             }
@@ -62,6 +77,11 @@ public class MapBase implements IDrawImage {
                     IMap ann = anMap.getClass().getAnnotation(IMap.class);
                     if (!ann.mapName().equals(map.RightLink()))
                         continue;
+
+                    if (anMap.isPositionInit() == false){
+                        anMap.setY(-map.height());
+                        anMap.positionInit();
+                    }
                     g.drawImage(anMap.getImage(), anMap.getX(), anMap.getY(), ann.width(), ann.height(), null);
                 }
             }
@@ -174,6 +194,14 @@ public class MapBase implements IDrawImage {
 
     public void setY(int y) {
         this.y = y;
+    }
+
+    public boolean isPositionInit(){
+        return false;
+    }
+
+    public void positionInit(){
+
     }
 
     public Image getImage(){

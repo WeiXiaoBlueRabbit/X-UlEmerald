@@ -7,12 +7,14 @@ import frame.Constant;
 
 import java.awt.*;
 
-@IMap(mapName = "map_2", DownLink = "map_1")
+@IMap(mapName = "map_2"/*, DownLink = "map_1"*/)
 public class Map_2 extends MapBase{
-    private int x = 150;
-    private int y = 150;
 
-    Image image = Common.getImage("map_1.jpg");
+    private int x = 0;
+    private int y = 0;
+    private boolean positionInit = false;
+
+    Image image = Common.getImage("map_2.png");
 
     public int getX() {
         return x;
@@ -28,6 +30,16 @@ public class Map_2 extends MapBase{
 
     public void setY(int y) {
         this.y = y;
+    }
+
+    @Override
+    public boolean isPositionInit() {
+        return this.positionInit;
+    }
+
+    @Override
+    public void positionInit() {
+        this.positionInit = true;
     }
 
     @Override
