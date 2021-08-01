@@ -12,14 +12,19 @@ src/frame/Constant.java文件中创建的GameContentLoader实例会
 将绘制的图片呈现在屏幕上
 
 ## 当前优先完成的任务：
-- [x] 精灵各参数的宏定义
 - [ ] 地图连接系统
-- [ ] 训练师和玩家人物行为系统
-- [x] 计时器Timer
-- [x] 任务task
+- [ ] 固定窗体大小
+- [ ] 添加碰撞箱
+- [ ] enter菜单
+- [ ] 玩家行为（移动速度[走路、跑步]，单次移动距离)
 - [ ] WildPoke文件的补全(src/content/poke/poke_basic/WildPoke)
 - [ ] TamePoke文件的编写(src/content/poke/poke_basic/TamePoke)
 - [ ] 
+
+## 已完成：
+- [x] 精灵各参数的宏定义
+- [x] 计时器Timer
+- [x] 任务task
 
 ## 文件：
 content 游戏内容  
