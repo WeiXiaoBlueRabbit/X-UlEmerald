@@ -42,7 +42,7 @@ public abstract class EntityAttribute implements IDrawImage {
         this.y = y;
         //图片处理
         String imageName = element.value();
-        this.image = Common.getImage(imageName);
+        this.image = Common.getPlayerImage(imageName);
     }
 
     /**

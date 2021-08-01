@@ -35,7 +35,7 @@ public class GameFrame extends JFrame {
         //玩家
         Player player = Player.player;
         //设置初始位置
-        player.setPlayerLocation("map_1");
+        player.setPlayerLocation("未白镇");
 /************************下面这些不用管 *********************************************/
         List<IDrawImage> all = Constant.mapList;
         all.add(player);

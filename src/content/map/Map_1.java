@@ -1,20 +1,18 @@
 package content.map;
 
 import common.gameInterface.interface_annotation.IMap;
-import content.map.common.RewardBalls;
 import frame.Common;
-import frame.Constant;
 
 import java.awt.*;
 
-@IMap(mapName = "map_1", UpLink = "map_2"/*, RightLink = "map_3"*/)
+@IMap(mapName = "未白镇", UpLink = "101号公路"/*, RightLink = "map_3"*/)
 public class Map_1 extends MapBase{
 
     private int x = 0;
     private int y = 0;
     private boolean positionInit = false;
 
-    Image image = Common.getImage("map_1.png");
+    Image image = Common.getMapImage("wei_bai_zhen.png");
 
     public int getX() {
         return x;

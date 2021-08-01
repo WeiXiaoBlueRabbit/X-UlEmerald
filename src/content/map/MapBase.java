@@ -51,7 +51,7 @@ public class MapBase implements IDrawImage {
                         continue;
 
                     if (anMap.isPositionInit() == false){
-                        anMap.setY(-map.height());
+                        anMap.setY(map.height());
                         anMap.positionInit();
                     }
                     g.drawImage(anMap.getImage(), anMap.getX(), anMap.getY(), ann.width(), ann.height(), null);
@@ -65,7 +65,7 @@ public class MapBase implements IDrawImage {
                         continue;
 
                     if (anMap.isPositionInit() == false){
-                        anMap.setY(-map.height());
+                        anMap.setX(-map.width());
                         anMap.positionInit();
                     }
                     g.drawImage(anMap.getImage(), anMap.getX(), anMap.getY(), ann.width(), ann.height(), null);
@@ -79,7 +79,7 @@ public class MapBase implements IDrawImage {
                         continue;
 
                     if (anMap.isPositionInit() == false){
-                        anMap.setY(-map.height());
+                        anMap.setX(map.width());
                         anMap.positionInit();
                     }
                     g.drawImage(anMap.getImage(), anMap.getX(), anMap.getY(), ann.width(), ann.height(), null);

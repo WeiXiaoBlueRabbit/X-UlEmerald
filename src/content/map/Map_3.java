@@ -1,9 +1,7 @@
 package content.map;
 
 import common.gameInterface.interface_annotation.IMap;
-import content.map.common.RewardBalls;
 import frame.Common;
-import frame.Constant;
 
 import java.awt.*;
 
@@ -12,7 +10,7 @@ public class Map_3 extends MapBase{
     private int x = 200;
     private int y = 200;
 
-    Image image = Common.getImage("poke.jpg");
+    Image image = Common.getMapImage("poke.jpg");
 
     public int getX() {
         return x;

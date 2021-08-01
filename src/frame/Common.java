@@ -9,8 +9,12 @@ import java.util.TimerTask;
 
 public abstract class Common {
 
-    public static Image getImage(String imageName) {
-        return new ImageIcon(Constant.RESOURCES_PATH + imageName).getImage();
+    public static Image getMapImage(String imageName) {
+        return new ImageIcon(Constant.RESOURCES_PATH + "map/" + imageName).getImage();
+    }
+
+    public static Image getPlayerImage(String imageName) {
+        return new ImageIcon(Constant.RESOURCES_PATH + "player/" + imageName).getImage();
     }
 
     public static void task(long period, ITimer t) {
