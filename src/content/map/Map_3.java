@@ -5,12 +5,12 @@ import frame.Common;
 
 import java.awt.*;
 
-@IMap(mapName = "map_3"/*, LeftLink = "map_1"*/)
+@IMap(mapName = "map_3", LeftLink = "未白镇")
 public class Map_3 extends MapBase{
-    private int x = 200;
-    private int y = 200;
+    private int x = 0;
+    private int y = 0;
 
-    Image image = Common.getMapImage("poke.jpg");
+    Image image = Common.getMapImage("101号公路.png");
 
     public int getX() {
         return x;

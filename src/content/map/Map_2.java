@@ -5,7 +5,7 @@ import frame.Common;
 
 import java.awt.*;
 
-@IMap(mapName = "101号公路"/*, DownLink = "map_1"*/)
+@IMap(mapName = "101号公路", DownLink = "未白镇")
 public class Map_2 extends MapBase{
 
     private int x = 0;

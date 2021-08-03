@@ -24,6 +24,11 @@ public class MapBase implements IDrawImage {
     private int moving;
     private String direction = "无";
 
+    private MapBase upLink = null;
+    private MapBase downLink = null;
+    private MapBase leftLink = null;
+    private MapBase rightLink = null;
+
     @Override
     public void drawImage(Graphics g) {
         MapBase[] allMap = Constant.gameContentLoader.allMap;
@@ -116,7 +121,7 @@ public class MapBase implements IDrawImage {
                         direction = "右";
                     }
                 }
-                doMoving(this);
+                //doMoving();
             }
 
             if (!map.UpLink().equals("null")) {
@@ -124,19 +129,9 @@ public class MapBase implements IDrawImage {
                     IMap ann = anMap.getClass().getAnnotation(IMap.class);
                     if (!ann.mapName().equals(map.UpLink()))
                         continue;
+                    upLink = anMap;
 
-                    if (!isMoving()) {
-                        if (Keys.UP.press() && !Keys.LEFT.press() && !Keys.RIGHT.press()) {
-                            direction = "上";
-                        } else if (Keys.DOWN.press() && !Keys.LEFT.press() && !Keys.RIGHT.press()) {
-                            direction = "下";
-                        } else if (Keys.LEFT.press()) {
-                            direction = "左";
-                        } else if (Keys.RIGHT.press()) {
-                            direction = "右";
-                        }
-                    }
-                    doMoving(anMap);
+                    //doMoving(anMap);
                 }
             }
 
@@ -145,19 +140,9 @@ public class MapBase implements IDrawImage {
                     IMap ann = anMap.getClass().getAnnotation(IMap.class);
                     if (!ann.mapName().equals(map.DownLink()))
                         continue;
+                    downLink = anMap;
 
-                    if (!isMoving()) {
-                        if (Keys.UP.press() && !Keys.LEFT.press() && !Keys.RIGHT.press()) {
-                            direction = "上";
-                        } else if (Keys.DOWN.press() && !Keys.LEFT.press() && !Keys.RIGHT.press()) {
-                            direction = "下";
-                        } else if (Keys.LEFT.press()) {
-                            direction = "左";
-                        } else if (Keys.RIGHT.press()) {
-                            direction = "右";
-                        }
-                    }
-                    doMoving(anMap);
+                    //doMoving(anMap);
                 }
             }
 
@@ -166,19 +151,9 @@ public class MapBase implements IDrawImage {
                     IMap ann = anMap.getClass().getAnnotation(IMap.class);
                     if (!ann.mapName().equals(map.LeftLink()))
                         continue;
+                    leftLink = anMap;
 
-                    if (!isMoving()) {
-                        if (Keys.UP.press() && !Keys.LEFT.press() && !Keys.RIGHT.press()) {
-                            direction = "上";
-                        } else if (Keys.DOWN.press() && !Keys.LEFT.press() && !Keys.RIGHT.press()) {
-                            direction = "下";
-                        } else if (Keys.LEFT.press()) {
-                            direction = "左";
-                        } else if (Keys.RIGHT.press()) {
-                            direction = "右";
-                        }
-                    }
-                    doMoving(anMap);
+                    //doMoving(anMap);
                 }
             }
 
@@ -187,19 +162,9 @@ public class MapBase implements IDrawImage {
                     IMap ann = anMap.getClass().getAnnotation(IMap.class);
                     if (!ann.mapName().equals(map.RightLink()))
                         continue;
+                    rightLink = anMap;
 
-                    if (!isMoving()) {
-                        if (Keys.UP.press() && !Keys.LEFT.press() && !Keys.RIGHT.press()) {
-                            direction = "上";
-                        } else if (Keys.DOWN.press() && !Keys.LEFT.press() && !Keys.RIGHT.press()) {
-                            direction = "下";
-                        } else if (Keys.LEFT.press()) {
-                            direction = "左";
-                        } else if (Keys.RIGHT.press()) {
-                            direction = "右";
-                        }
-                    }
-                    doMoving(anMap);
+                    //doMoving(anMap);
                 }
             }
         }
@@ -210,7 +175,7 @@ public class MapBase implements IDrawImage {
         return false;
     }
 
-    public void doMoving(MapBase anMap) {
+    public void doMoving() {
         if (direction.equals("无"))
             return;
 
@@ -218,13 +183,45 @@ public class MapBase implements IDrawImage {
             moving++;
 
             if (direction.equals("上")) {
-                anMap.setY(anMap.getY() + 5);
+                this.setY(this.getY() + 5);
+                if (upLink != null)
+                    upLink.setY(upLink.getY() + 5);
+                if (downLink != null)
+                    downLink.setY(downLink.getY() + 5);
+                if (leftLink != null)
+                    leftLink.setY(leftLink.getY() + 5);
+                if (rightLink != null)
+                    rightLink.setY(rightLink.getY() + 5);
             } else if (direction.equals("下")) {
-                anMap.setY(anMap.getY() - 5);
+                this.setY(this.getY() - 5);
+                if (upLink != null)
+                    upLink.setY(upLink.getY() - 5);
+                if (downLink != null)
+                    downLink.setY(downLink.getY() - 5);
+                if (leftLink != null)
+                    leftLink.setY(leftLink.getY() - 5);
+                if (rightLink != null)
+                    rightLink.setY(rightLink.getY() - 5);
             } else if (direction.equals("左")) {
-                anMap.setX(anMap.getX() + 5);
+                this.setX(this.getX() + 5);
+                if (upLink != null)
+                    upLink.setX(upLink.getX() + 5);
+                if (downLink != null)
+                    downLink.setX(downLink.getX() + 5);
+                if (leftLink != null)
+                    leftLink.setX(leftLink.getX() + 5);
+                if (rightLink != null)
+                    rightLink.setX(rightLink.getX() + 5);
             } else if (direction.equals("右")) {
-                anMap.setX(anMap.getX() - 5);
+                this.setX(this.getX() - 5);
+                if (upLink != null)
+                    upLink.setX(upLink.getX() - 5);
+                if (downLink != null)
+                    downLink.setX(downLink.getX() - 5);
+                if (leftLink != null)
+                    leftLink.setX(leftLink.getX() - 5);
+                if (rightLink != null)
+                    rightLink.setX(rightLink.getX() - 5);
             }
         } else {
             moving = 0;

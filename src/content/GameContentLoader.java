@@ -32,6 +32,7 @@ public class GameContentLoader implements IDrawImage {
         Common.task(20, () -> {
             for(MapBase anMap : allMap){
                 anMap.mapMove();
+                anMap.doMoving();
             }
         });
         //TODO 在这里写更多的task
