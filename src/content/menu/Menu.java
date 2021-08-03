@@ -9,6 +9,7 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class Menu implements IDrawImage {
@@ -39,14 +40,16 @@ public class Menu implements IDrawImage {
     public static Set<Integer> menuList;
 */
 
-    public ArrayList<MenuItem> menuList;
-    final MenuItemAtlas atlas = new MenuItemAtlas();
-    final MenuItemPokemon pokemon = new MenuItemPokemon();
-    final MenuItemBag bag = new MenuItemBag();
-    final MenuItemPlayer player = new MenuItemPlayer();
-    final MenuItemSave save = new MenuItemSave();
-    final MenuItemSetting setting = new MenuItemSetting();
-    final MenuItemExit exit = new MenuItemExit();
+    public static List<MenuItem> menuList;
+    public static final MenuItemAtlas atlas = new MenuItemAtlas(true);
+    public static final MenuItemPokemon pokemon = new MenuItemPokemon(false);
+    public static final MenuItemBag bag = new MenuItemBag(true);
+    public static final MenuItemPlayer player = new MenuItemPlayer(true);
+    public static final MenuItemSave save = new MenuItemSave(true);
+    public static final MenuItemSetting setting = new MenuItemSetting(true);
+    public static final MenuItemExit exit = new MenuItemExit(true);
+
+    Graphics g;
 
     int x = 1335;
     int y = 6;
@@ -59,24 +62,28 @@ public class Menu implements IDrawImage {
 
     public Menu(){
         menuList = new ArrayList<>();
-        menuList.add(atlas);
-        menuList.add(pokemon);
-        menuList.add(bag);
-        menuList.add(player);
-        menuList.add(save);
-        menuList.add(setting);
-        menuList.add(exit);
     }
 
     @Override
     public void drawImage(Graphics g) {
+        this.g = g;
         if (GameState.isInField && Keys.ENTER.press()) {
             GameState.setGameState(GameState.menu);
+
+            menuList.add(atlas);
+            menuList.add(pokemon);
+            menuList.add(bag);
+            menuList.add(player);
+            menuList.add(save);
+            menuList.add(setting);
+            menuList.add(exit);
+
             selectIndex = 1;
             Keys.remove(KeyEvent.VK_ENTER);
         }
         else if (GameState.isInMenu && Keys.ENTER.press() || GameState.isInMenu && Keys.X.press()) {
             GameState.setGameState(GameState.field);
+            menuList.removeAll(menuList);
             Keys.remove(KeyEvent.VK_ENTER);
             Keys.remove(KeyEvent.VK_X);
         }
@@ -92,49 +99,63 @@ public class Menu implements IDrawImage {
             //设置字体
             g.setFont(new Font("黑体", Font.PLAIN, 95));
 
-            if (menuList.contains(atlas)){
+            if (menuList.contains(atlas) && atlas.isShowInMenu()){
                 g.drawImage(atlasIcon,x + 128,y + (drawIndex - 1) * height + 10,95,95,null);
                 g.drawString("图鉴",x + 222,y + (drawIndex * height) - 10);
                 drawIndex++;
+            }else if (!atlas.isShowInMenu()){
+                menuList.remove(atlas);
             }
 
-            if (menuList.contains(pokemon)){
+            if (menuList.contains(pokemon) && pokemon.isShowInMenu()){
                 g.drawImage(pokemonIcon,x + 128,y + (drawIndex - 1) * height + 10,95,95,null);
                 g.drawString("宝可梦",x + 222,y + (drawIndex * height) - 10);
                 drawIndex++;
+            }else if (!pokemon.isShowInMenu()){
+                menuList.remove(pokemon);
             }
 
-            if (menuList.contains(bag)){
+            if (menuList.contains(bag) && bag.isShowInMenu()){
                 g.drawImage(bagIcon,x + 128,y + (drawIndex - 1) * height + 10,95,95,null);
                 g.drawString("背包",x + 222,y + (drawIndex * height) - 10);
                 drawIndex++;
+            }else if (!bag.isShowInMenu()){
+                menuList.remove(bag);
             }
 
-            if (menuList.contains(player)){
+            if (menuList.contains(player) && player.isShowInMenu()){
                 g.drawImage(playerIcon,x + 128,y + (drawIndex - 1) * height + 10,95,95,null);
                 g.drawString("小茂",x + 222,y + (drawIndex * height) - 10);
                 drawIndex++;
+            }else if (!player.isShowInMenu()){
+                menuList.remove(player);
             }
 
-            if (menuList.contains(save)){
+            if (menuList.contains(save) && save.isShowInMenu()){
                 g.drawImage(saveIcon,x + 128,y + (drawIndex - 1) * height + 10,95,95,null);
                 g.drawString("保存",x + 222,y + (drawIndex * height) - 10);
                 drawIndex++;
+            }else if (!save.isShowInMenu()){
+                menuList.remove(save);
             }
 
-            if (menuList.contains(setting)){
+            if (menuList.contains(setting) && setting.isShowInMenu()){
                 g.drawImage(settingIcon,x + 128,y + (drawIndex - 1) * height + 10,95,95,null);
                 g.drawString("设置",x + 222,y + (drawIndex * height) - 10);
                 drawIndex++;
+            }else if (!setting.isShowInMenu()){
+                menuList.remove(setting);
             }
 
-            if (menuList.contains(exit)){
+            if (menuList.contains(exit) && exit.isShowInMenu()){
                 g.drawImage(exitIcon,x + 128,y + (drawIndex - 1) * height + 10,95,95,null);
                 g.drawString("退出",x + 222,y + (drawIndex * height) - 10);
                 drawIndex++;
+            }else if (!exit.isShowInMenu()){
+                menuList.remove(exit);
             }
 
-            g.drawImage(bottomImage,x,y + ((menuList.size()+1) * height),width,height,null);
+            g.drawImage(bottomImage,x,y + ((menuList.size() + 1) * height),width,height,null);
 
             if (Keys.UP.press()){
                 selectIndex--;
@@ -151,27 +172,36 @@ public class Menu implements IDrawImage {
             }
 
             if (Keys.Z.press()){
+                System.out.println(menuList);
                 switch (selectIndex){
                     case 1:
-                        menuList.get(0).func();
+                        menuList.get(0).drawImage(this.g);
                         break;
+
                     case 2:
-                        menuList.get(1).func();
+                        menuList.get(1).drawImage(this.g);
                         break;
+
                     case 3:
-                        menuList.get(2).func();
+                        menuList.get(2).drawImage(this.g);
                         break;
+
                     case 4:
-                        menuList.get(3).func();
+                        menuList.get(3).drawImage(this.g);
                         break;
+
                     case 5:
-                        menuList.get(4).func();
+                        menuList.get(4).drawImage(this.g);
                         break;
+
                     case 6:
-                        menuList.get(5).func();
+                        menuList.get(5).drawImage(this.g);
                         break;
+
                     case 7:
-                        menuList.get(6).func();
+                        menuList.get(6).drawImage(this.g);
+                        break;
+                    default:
                         break;
                 }
             }
@@ -182,57 +212,3 @@ public class Menu implements IDrawImage {
     }
 }
 
-class MenuItem {
-    public void func() {}
-}
-
-class MenuItemAtlas extends MenuItem {
-    @Override
-    public void func() {
-        //图鉴
-    }
-}
-
-class MenuItemPokemon extends MenuItem {
-    @Override
-    public void func() {
-        //宝可梦背包
-    }
-}
-
-class MenuItemBag extends MenuItem {
-    @Override
-    public void func() {
-        //背包
-    }
-}
-
-class MenuItemPlayer extends MenuItem {
-    @Override
-    public void func() {
-        //玩家信息
-    }
-}
-
-class MenuItemSave extends MenuItem {
-    @Override
-    public void func() {
-        //保存
-    }
-}
-
-class MenuItemSetting extends MenuItem {
-    @Override
-    public void func() {
-        //设置
-    }
-}
-
-class MenuItemExit extends MenuItem {
-    @Override
-    public void func() {
-        GameState.setGameState(GameState.field);
-        Keys.remove(KeyEvent.VK_ENTER);
-        //退出
-    }
-}
