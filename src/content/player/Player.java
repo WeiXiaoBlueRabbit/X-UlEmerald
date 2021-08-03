@@ -7,7 +7,7 @@ import frame.Keys;
 
 import java.awt.*;
 
-@IElement(value = "poke.jpg", width = 45, height = 45)
+@IElement(value = "player.png", width = 130, height = 145)
 public class Player extends EntityAttribute {
 
     protected PlayerState playerState;//玩家状态 (走路、跑步、骑车)
