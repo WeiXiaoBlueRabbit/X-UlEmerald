@@ -179,52 +179,10 @@ public class MapBase implements IDrawImage {
         if (direction.equals("无"))
             return;
 
-        if (moving <= 26) {
+        if (moving <= 14) {
             moving++;
 
-            if (moving == 26) {
-                if (direction.equals("上")) {
-                    this.setY(this.getY() + 1);
-                    if (upLink != null)
-                        upLink.setY(upLink.getY() + 1);
-                    if (downLink != null)
-                        downLink.setY(downLink.getY() + 1);
-                    if (leftLink != null)
-                        leftLink.setY(leftLink.getY() + 1);
-                    if (rightLink != null)
-                        rightLink.setY(rightLink.getY() + 1);
-                } else if (direction.equals("下")) {
-                    this.setY(this.getY() - 1);
-                    if (upLink != null)
-                        upLink.setY(upLink.getY() - 1);
-                    if (downLink != null)
-                        downLink.setY(downLink.getY() - 1);
-                    if (leftLink != null)
-                        leftLink.setY(leftLink.getY() - 1);
-                    if (rightLink != null)
-                        rightLink.setY(rightLink.getY() - 1);
-                } else if (direction.equals("左")) {
-                    this.setX(this.getX() + 1);
-                    if (upLink != null)
-                        upLink.setX(upLink.getX() + 1);
-                    if (downLink != null)
-                        downLink.setX(downLink.getX() + 1);
-                    if (leftLink != null)
-                        leftLink.setX(leftLink.getX() + 1);
-                    if (rightLink != null)
-                        rightLink.setX(rightLink.getX() + 1);
-                } else if (direction.equals("右")) {
-                    this.setX(this.getX() - 1);
-                    if (upLink != null)
-                        upLink.setX(upLink.getX() - 1);
-                    if (downLink != null)
-                        downLink.setX(downLink.getX() - 1);
-                    if (leftLink != null)
-                        leftLink.setX(leftLink.getX() - 1);
-                    if (rightLink != null)
-                        rightLink.setX(rightLink.getX() - 1);
-                }
-            } else {
+            if (moving == 14) {
                 if (direction.equals("上")) {
                     this.setY(this.getY() + 5);
                     if (upLink != null)
@@ -265,6 +223,48 @@ public class MapBase implements IDrawImage {
                         leftLink.setX(leftLink.getX() - 5);
                     if (rightLink != null)
                         rightLink.setX(rightLink.getX() - 5);
+                }
+            } else {
+                if (direction.equals("上")) {
+                    this.setY(this.getY() + 9);
+                    if (upLink != null)
+                        upLink.setY(upLink.getY() + 9);
+                    if (downLink != null)
+                        downLink.setY(downLink.getY() + 9);
+                    if (leftLink != null)
+                        leftLink.setY(leftLink.getY() + 9);
+                    if (rightLink != null)
+                        rightLink.setY(rightLink.getY() + 9);
+                } else if (direction.equals("下")) {
+                    this.setY(this.getY() - 9);
+                    if (upLink != null)
+                        upLink.setY(upLink.getY() - 9);
+                    if (downLink != null)
+                        downLink.setY(downLink.getY() - 9);
+                    if (leftLink != null)
+                        leftLink.setY(leftLink.getY() - 9);
+                    if (rightLink != null)
+                        rightLink.setY(rightLink.getY() - 9);
+                } else if (direction.equals("左")) {
+                    this.setX(this.getX() + 9);
+                    if (upLink != null)
+                        upLink.setX(upLink.getX() + 9);
+                    if (downLink != null)
+                        downLink.setX(downLink.getX() + 9);
+                    if (leftLink != null)
+                        leftLink.setX(leftLink.getX() + 9);
+                    if (rightLink != null)
+                        rightLink.setX(rightLink.getX() + 9);
+                } else if (direction.equals("右")) {
+                    this.setX(this.getX() - 9);
+                    if (upLink != null)
+                        upLink.setX(upLink.getX() - 9);
+                    if (downLink != null)
+                        downLink.setX(downLink.getX() - 9);
+                    if (leftLink != null)
+                        leftLink.setX(leftLink.getX() - 9);
+                    if (rightLink != null)
+                        rightLink.setX(rightLink.getX() - 9);
                 }
             }
         } else {
