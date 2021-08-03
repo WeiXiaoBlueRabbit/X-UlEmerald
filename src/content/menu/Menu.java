@@ -7,6 +7,7 @@ import frame.Keys;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -26,6 +27,7 @@ public class Menu implements IDrawImage {
 
     Image arrowIcon = new ImageIcon("src/resources/image/enter_menu/arrow.png").getImage();
 
+/*
     public static final int atlas = 1;
     public static final int pokemon = 2;
     public static final int bag = 3;
@@ -35,6 +37,16 @@ public class Menu implements IDrawImage {
     public static final int exit = 7;
 
     public static Set<Integer> menuList;
+*/
+
+    public ArrayList<MenuItem> menuList;
+    final MenuItemAtlas atlas = new MenuItemAtlas();
+    final MenuItemPokemon pokemon = new MenuItemPokemon();
+    final MenuItemBag bag = new MenuItemBag();
+    final MenuItemPlayer player = new MenuItemPlayer();
+    final MenuItemSave save = new MenuItemSave();
+    final MenuItemSetting setting = new MenuItemSetting();
+    final MenuItemExit exit = new MenuItemExit();
 
     int x = 1335;
     int y = 6;
@@ -46,8 +58,7 @@ public class Menu implements IDrawImage {
     public static Menu menu = new Menu();
 
     public Menu(){
-        menuList = new HashSet<>();
-
+        menuList = new ArrayList<>();
         menuList.add(atlas);
         menuList.add(pokemon);
         menuList.add(bag);
@@ -141,119 +152,26 @@ public class Menu implements IDrawImage {
 
             if (Keys.Z.press()){
                 switch (selectIndex){
-
                     case 1:
-                        if (menuList.contains(atlas)){
-                            // TODO 调用图鉴的方法
-                            break;
-                        }else if (menuList.contains(pokemon)){
-                            // TODO 调用宝可梦背包的方法
-                            break;
-                        }else if (menuList.contains(bag)){
-                            // TODO 背包
-                            break;
-                        } else if (menuList.contains(player)){
-                            // TODO 玩家信息
-                            break;
-                        }else if (menuList.contains(save)){
-                            // TODO 保存
-                            break;
-                        }else if (menuList.contains(setting)){
-                            // TODO 设置
-                            break;
-                        }else if (menuList.contains(exit)){
-                            GameState.setGameState(GameState.field);
-                            Keys.remove(KeyEvent.VK_Z);
-                            break;
-                        }
+                        menuList.get(0).func();
                         break;
                     case 2:
-                        if (menuList.contains(pokemon)){
-                            // TODO 调用宝可梦背包的方法
-                            break;
-                        }else if (menuList.contains(bag)){
-                            // TODO 背包
-                            break;
-                        } else if (menuList.contains(player)){
-                            // TODO 玩家信息
-                            break;
-                        }else if (menuList.contains(save)){
-                            // TODO 保存
-                            break;
-                        }else if (menuList.contains(setting)){
-                            // TODO 设置
-                            break;
-                        }else if (menuList.contains(exit)){
-                            GameState.setGameState(GameState.field);
-                            Keys.remove(KeyEvent.VK_Z);
-                            break;
-                        }
+                        menuList.get(1).func();
                         break;
                     case 3:
-                        if (menuList.contains(bag)){
-                            // TODO 背包
-                            break;
-                        } else if (menuList.contains(player)){
-                            // TODO 玩家信息
-                            break;
-                        }else if (menuList.contains(save)){
-                            // TODO 保存
-                            break;
-                        }else if (menuList.contains(setting)){
-                            // TODO 设置
-                            break;
-                        }else if (menuList.contains(exit)){
-                            GameState.setGameState(GameState.field);
-                            Keys.remove(KeyEvent.VK_Z);
-                            break;
-                        }
+                        menuList.get(2).func();
                         break;
                     case 4:
-                        if (menuList.contains(player)){
-                            // TODO 玩家信息
-                            break;
-                        }else if (menuList.contains(save)){
-                            // TODO 保存
-                            break;
-                        }else if (menuList.contains(setting)){
-                            // TODO 设置
-                            break;
-                        }else if (menuList.contains(exit)){
-                            GameState.setGameState(GameState.field);
-                            Keys.remove(KeyEvent.VK_Z);
-                            break;
-                        }
+                        menuList.get(3).func();
                         break;
                     case 5:
-                        if (menuList.contains(save)){
-                            // TODO 保存
-                            break;
-                        }else if (menuList.contains(setting)){
-                            // TODO 设置
-                            break;
-                        }else if (menuList.contains(exit)){
-                            GameState.setGameState(GameState.field);
-                            Keys.remove(KeyEvent.VK_Z);
-                            break;
-                        }
+                        menuList.get(4).func();
                         break;
                     case 6:
-                        if (menuList.contains(setting)){
-                            // TODO 设置
-                            break;
-                        }else if (menuList.contains(exit)){
-                            GameState.setGameState(GameState.field);
-                            Keys.remove(KeyEvent.VK_Z);
-                            break;
-                        }
+                        menuList.get(5).func();
                         break;
                     case 7:
-                        if (menuList.contains(exit)){
-                            GameState.setGameState(GameState.field);
-                            Keys.remove(KeyEvent.VK_Z);
-                            break;
-                        }
-                    default:
+                        menuList.get(6).func();
                         break;
                 }
             }
@@ -261,5 +179,60 @@ public class Menu implements IDrawImage {
             g.drawImage(arrowIcon,x + 50,y + selectIndex * height + 25,70,70,null);
         }
 
+    }
+}
+
+class MenuItem {
+    public void func() {}
+}
+
+class MenuItemAtlas extends MenuItem {
+    @Override
+    public void func() {
+        //图鉴
+    }
+}
+
+class MenuItemPokemon extends MenuItem {
+    @Override
+    public void func() {
+        //宝可梦背包
+    }
+}
+
+class MenuItemBag extends MenuItem {
+    @Override
+    public void func() {
+        //背包
+    }
+}
+
+class MenuItemPlayer extends MenuItem {
+    @Override
+    public void func() {
+        //玩家信息
+    }
+}
+
+class MenuItemSave extends MenuItem {
+    @Override
+    public void func() {
+        //保存
+    }
+}
+
+class MenuItemSetting extends MenuItem {
+    @Override
+    public void func() {
+        //设置
+    }
+}
+
+class MenuItemExit extends MenuItem {
+    @Override
+    public void func() {
+        GameState.setGameState(GameState.field);
+        Keys.remove(KeyEvent.VK_ENTER);
+        //退出
     }
 }
