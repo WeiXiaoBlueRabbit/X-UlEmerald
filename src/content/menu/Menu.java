@@ -141,94 +141,120 @@ public class Menu implements IDrawImage {
 
             if (Keys.Z.press()){
                 switch (selectIndex){
-                    /** 底下这堆好像达不到效果
+
                     case 1:
                         if (menuList.contains(atlas)){
                             // TODO 调用图鉴的方法
+                            break;
                         }else if (menuList.contains(pokemon)){
                             // TODO 调用宝可梦背包的方法
+                            break;
                         }else if (menuList.contains(bag)){
                             // TODO 背包
+                            break;
                         } else if (menuList.contains(player)){
                             // TODO 玩家信息
+                            break;
                         }else if (menuList.contains(save)){
                             // TODO 保存
+                            break;
                         }else if (menuList.contains(setting)){
                             // TODO 设置
+                            break;
                         }else if (menuList.contains(exit)){
                             GameState.setGameState(GameState.field);
                             Keys.remove(KeyEvent.VK_Z);
+                            break;
                         }
                         break;
                     case 2:
                         if (menuList.contains(pokemon)){
                             // TODO 调用宝可梦背包的方法
+                            break;
                         }else if (menuList.contains(bag)){
                             // TODO 背包
+                            break;
                         } else if (menuList.contains(player)){
                             // TODO 玩家信息
+                            break;
                         }else if (menuList.contains(save)){
                             // TODO 保存
+                            break;
                         }else if (menuList.contains(setting)){
                             // TODO 设置
+                            break;
                         }else if (menuList.contains(exit)){
                             GameState.setGameState(GameState.field);
                             Keys.remove(KeyEvent.VK_Z);
+                            break;
                         }
                         break;
                     case 3:
                         if (menuList.contains(bag)){
                             // TODO 背包
+                            break;
                         } else if (menuList.contains(player)){
                             // TODO 玩家信息
+                            break;
                         }else if (menuList.contains(save)){
                             // TODO 保存
+                            break;
                         }else if (menuList.contains(setting)){
                             // TODO 设置
+                            break;
                         }else if (menuList.contains(exit)){
                             GameState.setGameState(GameState.field);
                             Keys.remove(KeyEvent.VK_Z);
+                            break;
                         }
                         break;
                     case 4:
                         if (menuList.contains(player)){
                             // TODO 玩家信息
+                            break;
                         }else if (menuList.contains(save)){
                             // TODO 保存
+                            break;
                         }else if (menuList.contains(setting)){
                             // TODO 设置
+                            break;
                         }else if (menuList.contains(exit)){
                             GameState.setGameState(GameState.field);
                             Keys.remove(KeyEvent.VK_Z);
+                            break;
                         }
                         break;
                     case 5:
                         if (menuList.contains(save)){
                             // TODO 保存
+                            break;
                         }else if (menuList.contains(setting)){
                             // TODO 设置
+                            break;
                         }else if (menuList.contains(exit)){
                             GameState.setGameState(GameState.field);
                             Keys.remove(KeyEvent.VK_Z);
+                            break;
                         }
                         break;
                     case 6:
                         if (menuList.contains(setting)){
                             // TODO 设置
+                            break;
                         }else if (menuList.contains(exit)){
                             GameState.setGameState(GameState.field);
                             Keys.remove(KeyEvent.VK_Z);
+                            break;
                         }
                         break;
                     case 7:
                         if (menuList.contains(exit)){
                             GameState.setGameState(GameState.field);
                             Keys.remove(KeyEvent.VK_Z);
+                            break;
                         }
                     default:
                         break;
-
-                     */
                 }
             }
 
