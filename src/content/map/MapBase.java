@@ -179,49 +179,93 @@ public class MapBase implements IDrawImage {
         if (direction.equals("无"))
             return;
 
-        if (moving < 26) {
+        if (moving <= 26) {
             moving++;
 
-            if (direction.equals("上")) {
-                this.setY(this.getY() + 5);
-                if (upLink != null)
-                    upLink.setY(upLink.getY() + 5);
-                if (downLink != null)
-                    downLink.setY(downLink.getY() + 5);
-                if (leftLink != null)
-                    leftLink.setY(leftLink.getY() + 5);
-                if (rightLink != null)
-                    rightLink.setY(rightLink.getY() + 5);
-            } else if (direction.equals("下")) {
-                this.setY(this.getY() - 5);
-                if (upLink != null)
-                    upLink.setY(upLink.getY() - 5);
-                if (downLink != null)
-                    downLink.setY(downLink.getY() - 5);
-                if (leftLink != null)
-                    leftLink.setY(leftLink.getY() - 5);
-                if (rightLink != null)
-                    rightLink.setY(rightLink.getY() - 5);
-            } else if (direction.equals("左")) {
-                this.setX(this.getX() + 5);
-                if (upLink != null)
-                    upLink.setX(upLink.getX() + 5);
-                if (downLink != null)
-                    downLink.setX(downLink.getX() + 5);
-                if (leftLink != null)
-                    leftLink.setX(leftLink.getX() + 5);
-                if (rightLink != null)
-                    rightLink.setX(rightLink.getX() + 5);
-            } else if (direction.equals("右")) {
-                this.setX(this.getX() - 5);
-                if (upLink != null)
-                    upLink.setX(upLink.getX() - 5);
-                if (downLink != null)
-                    downLink.setX(downLink.getX() - 5);
-                if (leftLink != null)
-                    leftLink.setX(leftLink.getX() - 5);
-                if (rightLink != null)
-                    rightLink.setX(rightLink.getX() - 5);
+            if (moving == 26) {
+                if (direction.equals("上")) {
+                    this.setY(this.getY() + 1);
+                    if (upLink != null)
+                        upLink.setY(upLink.getY() + 1);
+                    if (downLink != null)
+                        downLink.setY(downLink.getY() + 1);
+                    if (leftLink != null)
+                        leftLink.setY(leftLink.getY() + 1);
+                    if (rightLink != null)
+                        rightLink.setY(rightLink.getY() + 1);
+                } else if (direction.equals("下")) {
+                    this.setY(this.getY() - 1);
+                    if (upLink != null)
+                        upLink.setY(upLink.getY() - 1);
+                    if (downLink != null)
+                        downLink.setY(downLink.getY() - 1);
+                    if (leftLink != null)
+                        leftLink.setY(leftLink.getY() - 1);
+                    if (rightLink != null)
+                        rightLink.setY(rightLink.getY() - 1);
+                } else if (direction.equals("左")) {
+                    this.setX(this.getX() + 1);
+                    if (upLink != null)
+                        upLink.setX(upLink.getX() + 1);
+                    if (downLink != null)
+                        downLink.setX(downLink.getX() + 1);
+                    if (leftLink != null)
+                        leftLink.setX(leftLink.getX() + 1);
+                    if (rightLink != null)
+                        rightLink.setX(rightLink.getX() + 1);
+                } else if (direction.equals("右")) {
+                    this.setX(this.getX() - 1);
+                    if (upLink != null)
+                        upLink.setX(upLink.getX() - 1);
+                    if (downLink != null)
+                        downLink.setX(downLink.getX() - 1);
+                    if (leftLink != null)
+                        leftLink.setX(leftLink.getX() - 1);
+                    if (rightLink != null)
+                        rightLink.setX(rightLink.getX() - 1);
+                }
+            } else {
+                if (direction.equals("上")) {
+                    this.setY(this.getY() + 5);
+                    if (upLink != null)
+                        upLink.setY(upLink.getY() + 5);
+                    if (downLink != null)
+                        downLink.setY(downLink.getY() + 5);
+                    if (leftLink != null)
+                        leftLink.setY(leftLink.getY() + 5);
+                    if (rightLink != null)
+                        rightLink.setY(rightLink.getY() + 5);
+                } else if (direction.equals("下")) {
+                    this.setY(this.getY() - 5);
+                    if (upLink != null)
+                        upLink.setY(upLink.getY() - 5);
+                    if (downLink != null)
+                        downLink.setY(downLink.getY() - 5);
+                    if (leftLink != null)
+                        leftLink.setY(leftLink.getY() - 5);
+                    if (rightLink != null)
+                        rightLink.setY(rightLink.getY() - 5);
+                } else if (direction.equals("左")) {
+                    this.setX(this.getX() + 5);
+                    if (upLink != null)
+                        upLink.setX(upLink.getX() + 5);
+                    if (downLink != null)
+                        downLink.setX(downLink.getX() + 5);
+                    if (leftLink != null)
+                        leftLink.setX(leftLink.getX() + 5);
+                    if (rightLink != null)
+                        rightLink.setX(rightLink.getX() + 5);
+                } else if (direction.equals("右")) {
+                    this.setX(this.getX() - 5);
+                    if (upLink != null)
+                        upLink.setX(upLink.getX() - 5);
+                    if (downLink != null)
+                        downLink.setX(downLink.getX() - 5);
+                    if (leftLink != null)
+                        leftLink.setX(leftLink.getX() - 5);
+                    if (rightLink != null)
+                        rightLink.setX(rightLink.getX() - 5);
+                }
             }
         } else {
             moving = 0;
