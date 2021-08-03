@@ -8,7 +8,9 @@ import java.util.List;
 
 import common.gameInterface.IDrawImage;
 import content.GameContentLoader;
+import content.GameState;
 import content.map.MapBase;
+import content.menu.Menu;
 import content.player.Player;
 
 public class GameFrame extends JFrame {
@@ -18,7 +20,7 @@ public class GameFrame extends JFrame {
 
         this.setTitle("poke");  //窗口标题
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  //窗体退出方式
-        this.setResizable(false);//固定窗体
+        //this.setResizable(false);//固定窗体
 
         //获取整个屏幕大小
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -40,6 +42,7 @@ public class GameFrame extends JFrame {
         List<IDrawImage> all = Constant.mapList;
         all.add(player);
         all.add(Constant.gameContentLoader);
+        all.add(Menu.menu);
 
         IDrawImage[] allImage = new IDrawImage[all.size()];
         all.toArray(allImage);

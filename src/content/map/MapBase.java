@@ -2,6 +2,7 @@ package content.map;
 
 import common.gameInterface.IDrawImage;
 import common.gameInterface.interface_annotation.IMap;
+import content.GameState;
 import content.map.common.RewardBalls;
 import content.player.Player;
 import frame.Constant;
@@ -93,89 +94,90 @@ public class MapBase implements IDrawImage {
      * 问题猜想一：其判断似乎全部为false导致地图的x，y未得到更改而无法运作
      *问题猜想二：可能与我在src/frame/GamePanel.java中的paint方法写死了x，y有关？？
      * */
-    public void mapMove(){
+    public void mapMove() {
 
         MapBase[] allMap = Constant.gameContentLoader.allMap;
         System.out.println("x = " + this.getX() + " y = " + this.getY());
 
         IMap map = this.getClass().getAnnotation(IMap.class);
-
-        if (map.mapName().equals(Player.player.getPlayerLocation())){
-            if (Keys.UP.press() && !Keys.LEFT.press() && !Keys.RIGHT.press())
-                this.setY(this.getY() - 1);
-            if (Keys.DOWN.press() && !Keys.LEFT.press() && !Keys.RIGHT.press())
-                this.setY(this.getY() + 1);
-            if (Keys.LEFT.press())
-                this.setX(this.getX() - 1);
-            if (Keys.RIGHT.press())
-                this.setX(this.getX() + 1);
-        }
-
-        if (!map.UpLink().equals("null")){
-            for (MapBase anMap : allMap){
-                IMap ann = anMap.getClass().getAnnotation(IMap.class);
-                if (!ann.mapName().equals(map.UpLink()))
-                    continue;
-
+        if (GameState.isInField == true) {
+            if (map.mapName().equals(Player.player.getPlayerLocation())) {
                 if (Keys.UP.press() && !Keys.LEFT.press() && !Keys.RIGHT.press())
-                    anMap.setY(anMap.getY() - 1);
+                    this.setY(this.getY() - 1);
                 if (Keys.DOWN.press() && !Keys.LEFT.press() && !Keys.RIGHT.press())
-                    anMap.setY(anMap.getY() + 1);
+                    this.setY(this.getY() + 1);
                 if (Keys.LEFT.press())
-                    anMap.setX(anMap.getX() - 1);
+                    this.setX(this.getX() - 1);
                 if (Keys.RIGHT.press())
-                    anMap.setX(anMap.getX() + 1);
+                    this.setX(this.getX() + 1);
             }
-        }
 
-        if (!map.DownLink().equals("null")){
-            for (MapBase anMap : allMap){
-                IMap ann = anMap.getClass().getAnnotation(IMap.class);
-                if (!ann.mapName().equals(map.DownLink()))
-                    continue;
+            if (!map.UpLink().equals("null")) {
+                for (MapBase anMap : allMap) {
+                    IMap ann = anMap.getClass().getAnnotation(IMap.class);
+                    if (!ann.mapName().equals(map.UpLink()))
+                        continue;
 
-                if (Keys.UP.press() && !Keys.LEFT.press() && !Keys.RIGHT.press())
-                    anMap.setY(anMap.getY() - 1);
-                if (Keys.DOWN.press() && !Keys.LEFT.press() && !Keys.RIGHT.press())
-                    anMap.setY(anMap.getY() + 1);
-                if (Keys.LEFT.press())
-                    anMap.setX(anMap.getX() - 1);
-                if (Keys.RIGHT.press())
-                    anMap.setX(anMap.getX() + 1);
+                    if (Keys.UP.press() && !Keys.LEFT.press() && !Keys.RIGHT.press())
+                        anMap.setY(anMap.getY() - 1);
+                    if (Keys.DOWN.press() && !Keys.LEFT.press() && !Keys.RIGHT.press())
+                        anMap.setY(anMap.getY() + 1);
+                    if (Keys.LEFT.press())
+                        anMap.setX(anMap.getX() - 1);
+                    if (Keys.RIGHT.press())
+                        anMap.setX(anMap.getX() + 1);
+                }
             }
-        }
 
-        if (!map.LeftLink().equals("null")){
-            for (MapBase anMap : allMap){
-                IMap ann = anMap.getClass().getAnnotation(IMap.class);
-                if (!ann.mapName().equals(map.LeftLink()))
-                    continue;
+            if (!map.DownLink().equals("null")) {
+                for (MapBase anMap : allMap) {
+                    IMap ann = anMap.getClass().getAnnotation(IMap.class);
+                    if (!ann.mapName().equals(map.DownLink()))
+                        continue;
 
-                if (Keys.UP.press() && !Keys.LEFT.press() && !Keys.RIGHT.press())
-                    anMap.setY(anMap.getY() - 1);
-                if (Keys.DOWN.press() && !Keys.LEFT.press() && !Keys.RIGHT.press())
-                    anMap.setY(anMap.getY() + 1);
-                if (Keys.LEFT.press())
-                    anMap.setX(anMap.getX() - 1);
-                if (Keys.RIGHT.press())
-                    anMap.setX(anMap.getX() + 1);
+                    if (Keys.UP.press() && !Keys.LEFT.press() && !Keys.RIGHT.press())
+                        anMap.setY(anMap.getY() - 1);
+                    if (Keys.DOWN.press() && !Keys.LEFT.press() && !Keys.RIGHT.press())
+                        anMap.setY(anMap.getY() + 1);
+                    if (Keys.LEFT.press())
+                        anMap.setX(anMap.getX() - 1);
+                    if (Keys.RIGHT.press())
+                        anMap.setX(anMap.getX() + 1);
+                }
             }
-        }
 
-        if (!map.RightLink().equals("null")){
-            for (MapBase anMap : allMap){
-                IMap ann = anMap.getClass().getAnnotation(IMap.class);
-                if (!ann.mapName().equals(map.RightLink()))
-                    continue;
+            if (!map.LeftLink().equals("null")) {
+                for (MapBase anMap : allMap) {
+                    IMap ann = anMap.getClass().getAnnotation(IMap.class);
+                    if (!ann.mapName().equals(map.LeftLink()))
+                        continue;
 
-                if (Keys.UP.press() && !Keys.LEFT.press() && !Keys.RIGHT.press())
-                    anMap.setY(anMap.getY() - 1);
-                if (Keys.DOWN.press() && !Keys.LEFT.press() && !Keys.RIGHT.press())
-                    anMap.setY(anMap.getY() + 1);
-                if (Keys.LEFT.press())
-                    anMap.setX(anMap.getX() - 1);
-                if (Keys.RIGHT.press())
-                    anMap.setX(anMap.getX() + 1);
+                    if (Keys.UP.press() && !Keys.LEFT.press() && !Keys.RIGHT.press())
+                        anMap.setY(anMap.getY() - 1);
+                    if (Keys.DOWN.press() && !Keys.LEFT.press() && !Keys.RIGHT.press())
+                        anMap.setY(anMap.getY() + 1);
+                    if (Keys.LEFT.press())
+                        anMap.setX(anMap.getX() - 1);
+                    if (Keys.RIGHT.press())
+                        anMap.setX(anMap.getX() + 1);
+                }
+            }
+
+            if (!map.RightLink().equals("null")) {
+                for (MapBase anMap : allMap) {
+                    IMap ann = anMap.getClass().getAnnotation(IMap.class);
+                    if (!ann.mapName().equals(map.RightLink()))
+                        continue;
+
+                    if (Keys.UP.press() && !Keys.LEFT.press() && !Keys.RIGHT.press())
+                        anMap.setY(anMap.getY() - 1);
+                    if (Keys.DOWN.press() && !Keys.LEFT.press() && !Keys.RIGHT.press())
+                        anMap.setY(anMap.getY() + 1);
+                    if (Keys.LEFT.press())
+                        anMap.setX(anMap.getX() - 1);
+                    if (Keys.RIGHT.press())
+                        anMap.setX(anMap.getX() + 1);
+                }
             }
         }
     }
