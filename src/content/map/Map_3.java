@@ -7,10 +7,12 @@ import java.awt.*;
 
 @IMap(mapName = "map_3", LeftLink = "未白镇")
 public class Map_3 extends MapBase{
+
     private int x = 0;
     private int y = 0;
+    private boolean positionInit = false;
 
-    Image image = Common.getMapImage("101号公路.png");
+    Image image = Common.getMapImage("Road_101.png");
 
     public int getX() {
         return x;
@@ -26,6 +28,16 @@ public class Map_3 extends MapBase{
 
     public void setY(int y) {
         this.y = y;
+    }
+
+    @Override
+    public boolean isPositionInit() {
+        return this.positionInit;
+    }
+
+    @Override
+    public void positionInit() {
+        this.positionInit = true;
     }
 
     @Override
