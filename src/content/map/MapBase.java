@@ -21,6 +21,8 @@ public class MapBase implements IDrawImage {
     private Image image;
     private RewardBalls ball_1;
     private int x,y;
+    private int moving;
+    private String direction = "无";
 
     @Override
     public void drawImage(Graphics g) {
@@ -94,91 +96,140 @@ public class MapBase implements IDrawImage {
      * 问题猜想一：其判断似乎全部为false导致地图的x，y未得到更改而无法运作
      *问题猜想二：可能与我在src/frame/GamePanel.java中的paint方法写死了x，y有关？？
      * */
-    public void mapMove() {
+    public void mapMove(){
 
         MapBase[] allMap = Constant.gameContentLoader.allMap;
         System.out.println("x = " + this.getX() + " y = " + this.getY());
 
         IMap map = this.getClass().getAnnotation(IMap.class);
+
         if (GameState.isInField == true) {
-            if (map.mapName().equals(Player.player.getPlayerLocation())) {
-                if (Keys.UP.press() && !Keys.LEFT.press() && !Keys.RIGHT.press())
-                    this.setY(this.getY() - 1);
-                if (Keys.DOWN.press() && !Keys.LEFT.press() && !Keys.RIGHT.press())
-                    this.setY(this.getY() + 1);
-                if (Keys.LEFT.press())
-                    this.setX(this.getX() - 1);
-                if (Keys.RIGHT.press())
-                    this.setX(this.getX() + 1);
+            if (map.mapName().equals(Player.player.getPlayerLocation())){
+                if (!isMoving()) {
+                    if (Keys.UP.press() && !Keys.LEFT.press() && !Keys.RIGHT.press()) {
+                        direction = "上";
+                    } else if (Keys.DOWN.press() && !Keys.LEFT.press() && !Keys.RIGHT.press()) {
+                        direction = "下";
+                    } else if (Keys.LEFT.press()) {
+                        direction = "左";
+                    } else if (Keys.RIGHT.press()) {
+                        direction = "右";
+                    }
+                }
+                doMoving(this);
             }
+        }
 
-            if (!map.UpLink().equals("null")) {
-                for (MapBase anMap : allMap) {
-                    IMap ann = anMap.getClass().getAnnotation(IMap.class);
-                    if (!ann.mapName().equals(map.UpLink()))
-                        continue;
+        if (!map.UpLink().equals("null")){
+            for (MapBase anMap : allMap){
+                IMap ann = anMap.getClass().getAnnotation(IMap.class);
+                if (!ann.mapName().equals(map.UpLink()))
+                    continue;
 
-                    if (Keys.UP.press() && !Keys.LEFT.press() && !Keys.RIGHT.press())
-                        anMap.setY(anMap.getY() - 1);
-                    if (Keys.DOWN.press() && !Keys.LEFT.press() && !Keys.RIGHT.press())
-                        anMap.setY(anMap.getY() + 1);
-                    if (Keys.LEFT.press())
-                        anMap.setX(anMap.getX() - 1);
-                    if (Keys.RIGHT.press())
-                        anMap.setX(anMap.getX() + 1);
+                if (!isMoving()) {
+                    if (Keys.UP.press() && !Keys.LEFT.press() && !Keys.RIGHT.press()) {
+                        direction = "上";
+                    } else if (Keys.DOWN.press() && !Keys.LEFT.press() && !Keys.RIGHT.press()) {
+                        direction = "下";
+                    } else if (Keys.LEFT.press()) {
+                        direction = "左";
+                    } else if (Keys.RIGHT.press()) {
+                        direction = "右";
+                    }
+                    doMoving(anMap);
                 }
             }
+        }
 
-            if (!map.DownLink().equals("null")) {
-                for (MapBase anMap : allMap) {
-                    IMap ann = anMap.getClass().getAnnotation(IMap.class);
-                    if (!ann.mapName().equals(map.DownLink()))
-                        continue;
+        if (!map.DownLink().equals("null")){
+            for (MapBase anMap : allMap){
+                IMap ann = anMap.getClass().getAnnotation(IMap.class);
+                if (!ann.mapName().equals(map.DownLink()))
+                    continue;
 
-                    if (Keys.UP.press() && !Keys.LEFT.press() && !Keys.RIGHT.press())
-                        anMap.setY(anMap.getY() - 1);
-                    if (Keys.DOWN.press() && !Keys.LEFT.press() && !Keys.RIGHT.press())
-                        anMap.setY(anMap.getY() + 1);
-                    if (Keys.LEFT.press())
-                        anMap.setX(anMap.getX() - 1);
-                    if (Keys.RIGHT.press())
-                        anMap.setX(anMap.getX() + 1);
+                if (!isMoving()) {
+                    if (Keys.UP.press() && !Keys.LEFT.press() && !Keys.RIGHT.press()) {
+                        direction = "上";
+                    } else if (Keys.DOWN.press() && !Keys.LEFT.press() && !Keys.RIGHT.press()) {
+                        direction = "下";
+                    } else if (Keys.LEFT.press()) {
+                        direction = "左";
+                    } else if (Keys.RIGHT.press()) {
+                        direction = "右";
+                    }
+                    doMoving(anMap);
                 }
             }
+        }
 
-            if (!map.LeftLink().equals("null")) {
-                for (MapBase anMap : allMap) {
-                    IMap ann = anMap.getClass().getAnnotation(IMap.class);
-                    if (!ann.mapName().equals(map.LeftLink()))
-                        continue;
+        if (!map.LeftLink().equals("null")){
+            for (MapBase anMap : allMap){
+                IMap ann = anMap.getClass().getAnnotation(IMap.class);
+                if (!ann.mapName().equals(map.LeftLink()))
+                    continue;
 
-                    if (Keys.UP.press() && !Keys.LEFT.press() && !Keys.RIGHT.press())
-                        anMap.setY(anMap.getY() - 1);
-                    if (Keys.DOWN.press() && !Keys.LEFT.press() && !Keys.RIGHT.press())
-                        anMap.setY(anMap.getY() + 1);
-                    if (Keys.LEFT.press())
-                        anMap.setX(anMap.getX() - 1);
-                    if (Keys.RIGHT.press())
-                        anMap.setX(anMap.getX() + 1);
+                if (!isMoving()) {
+                    if (Keys.UP.press() && !Keys.LEFT.press() && !Keys.RIGHT.press()) {
+                        direction = "上";
+                    } else if (Keys.DOWN.press() && !Keys.LEFT.press() && !Keys.RIGHT.press()) {
+                        direction = "下";
+                    } else if (Keys.LEFT.press()) {
+                        direction = "左";
+                    } else if (Keys.RIGHT.press()) {
+                        direction = "右";
+                    }
+                    doMoving(anMap);
                 }
             }
+        }
 
-            if (!map.RightLink().equals("null")) {
-                for (MapBase anMap : allMap) {
-                    IMap ann = anMap.getClass().getAnnotation(IMap.class);
-                    if (!ann.mapName().equals(map.RightLink()))
-                        continue;
+        if (!map.RightLink().equals("null")){
+            for (MapBase anMap : allMap){
+                IMap ann = anMap.getClass().getAnnotation(IMap.class);
+                if (!ann.mapName().equals(map.RightLink()))
+                    continue;
 
-                    if (Keys.UP.press() && !Keys.LEFT.press() && !Keys.RIGHT.press())
-                        anMap.setY(anMap.getY() - 1);
-                    if (Keys.DOWN.press() && !Keys.LEFT.press() && !Keys.RIGHT.press())
-                        anMap.setY(anMap.getY() + 1);
-                    if (Keys.LEFT.press())
-                        anMap.setX(anMap.getX() - 1);
-                    if (Keys.RIGHT.press())
-                        anMap.setX(anMap.getX() + 1);
+                if (!isMoving()) {
+                    if (Keys.UP.press() && !Keys.LEFT.press() && !Keys.RIGHT.press()) {
+                        direction = "上";
+                    } else if (Keys.DOWN.press() && !Keys.LEFT.press() && !Keys.RIGHT.press()) {
+                        direction = "下";
+                    } else if (Keys.LEFT.press()) {
+                        direction = "左";
+                    } else if (Keys.RIGHT.press()) {
+                        direction = "右";
+                    }
+                    doMoving(anMap);
                 }
             }
+        }
+    }
+
+    public boolean isMoving() {
+        if (moving != 0)
+            return true;
+        return false;
+    }
+
+    public void doMoving(MapBase anMap) {
+        if (direction.equals("无"))
+            return;
+
+        if (moving < 26) {
+            moving++;
+
+            if (direction.equals("上")) {
+                anMap.setY(anMap.getY() + 5);
+            } else if (direction.equals("下")) {
+                anMap.setY(anMap.getY() - 5);
+            } else if (direction.equals("左")) {
+                anMap.setX(anMap.getX() + 5);
+            } else if (direction.equals("右")) {
+                anMap.setX(anMap.getX() - 5);
+            }
+        } else {
+            moving = 0;
+            direction = "无";
         }
     }
 
