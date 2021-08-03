@@ -121,7 +121,7 @@ public class MapBase implements IDrawImage {
                         direction = "右";
                     }
                 }
-                //doMoving();
+                doMoving();
             }
 
             if (!map.UpLink().equals("null")) {
@@ -267,9 +267,13 @@ public class MapBase implements IDrawImage {
                         rightLink.setX(rightLink.getX() - 9);
                 }
             }
-        } else {
+        } else if (!Keys.UP.press() && !Keys.DOWN.press() && !Keys.LEFT.press() && !Keys.RIGHT.press()){
             moving = 0;
             direction = "无";
+        }
+        else {
+            moving = 0;
+            this.mapMove();
         }
     }
 
