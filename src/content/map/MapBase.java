@@ -45,7 +45,7 @@ public class MapBase implements IDrawImage {
                         continue;
 
                     if (anMap.isPositionInit() == false){
-                        anMap.setY(-map.height());
+                        anMap.setY(-map.height() + this.getY());
                         anMap.positionInit();
                     }
                     g.drawImage(anMap.getImage(), anMap.getX(), anMap.getY(), ann.width(), ann.height(), null);
@@ -59,7 +59,7 @@ public class MapBase implements IDrawImage {
                         continue;
 
                     if (anMap.isPositionInit() == false){
-                        anMap.setY(map.height());
+                        anMap.setY(map.height() + this.getY());
                         anMap.positionInit();
                     }
                     g.drawImage(anMap.getImage(), anMap.getX(), anMap.getY(), ann.width(), ann.height(), null);
@@ -73,7 +73,7 @@ public class MapBase implements IDrawImage {
                         continue;
 
                     if (anMap.isPositionInit() == false){
-                        anMap.setX(-map.width());
+                        anMap.setX(-map.width() + this.getX());
                         anMap.positionInit();
                     }
                     g.drawImage(anMap.getImage(), anMap.getX(), anMap.getY(), ann.width(), ann.height(), null);
@@ -87,7 +87,7 @@ public class MapBase implements IDrawImage {
                         continue;
 
                     if (anMap.isPositionInit() == false){
-                        anMap.setX(map.width());
+                        anMap.setX(map.width() + this.getX());
                         anMap.positionInit();
                     }
                     g.drawImage(anMap.getImage(), anMap.getX(), anMap.getY(), ann.width(), ann.height(), null);
@@ -184,25 +184,25 @@ public class MapBase implements IDrawImage {
 
             if (moving == 14) {
                 if (direction.equals("上")) {
-                    this.setY(this.getY() + 5);
+                    this.setY(this.getY() + 3);
                     if (upLink != null)
-                        upLink.setY(upLink.getY() + 5);
+                        upLink.setY(upLink.getY() + 3);
                     if (downLink != null)
-                        downLink.setY(downLink.getY() + 5);
+                        downLink.setY(downLink.getY() + 3);
                     if (leftLink != null)
-                        leftLink.setY(leftLink.getY() + 5);
+                        leftLink.setY(leftLink.getY() + 3);
                     if (rightLink != null)
-                        rightLink.setY(rightLink.getY() + 5);
+                        rightLink.setY(rightLink.getY() + 3);
                 } else if (direction.equals("下")) {
-                    this.setY(this.getY() - 5);
+                    this.setY(this.getY() - 3);
                     if (upLink != null)
-                        upLink.setY(upLink.getY() - 5);
+                        upLink.setY(upLink.getY() - 3);
                     if (downLink != null)
-                        downLink.setY(downLink.getY() - 5);
+                        downLink.setY(downLink.getY() - 3);
                     if (leftLink != null)
-                        leftLink.setY(leftLink.getY() - 5);
+                        leftLink.setY(leftLink.getY() - 3);
                     if (rightLink != null)
-                        rightLink.setY(rightLink.getY() - 5);
+                        rightLink.setY(rightLink.getY() - 3);
                 } else if (direction.equals("左")) {
                     this.setX(this.getX() + 5);
                     if (upLink != null)
@@ -226,25 +226,25 @@ public class MapBase implements IDrawImage {
                 }
             } else {
                 if (direction.equals("上")) {
-                    this.setY(this.getY() + 9);
+                    this.setY(this.getY() + 7);
                     if (upLink != null)
-                        upLink.setY(upLink.getY() + 9);
+                        upLink.setY(upLink.getY() + 7);
                     if (downLink != null)
-                        downLink.setY(downLink.getY() + 9);
+                        downLink.setY(downLink.getY() + 7);
                     if (leftLink != null)
-                        leftLink.setY(leftLink.getY() + 9);
+                        leftLink.setY(leftLink.getY() + 7);
                     if (rightLink != null)
-                        rightLink.setY(rightLink.getY() + 9);
+                        rightLink.setY(rightLink.getY() + 7);
                 } else if (direction.equals("下")) {
-                    this.setY(this.getY() - 9);
+                    this.setY(this.getY() - 7);
                     if (upLink != null)
-                        upLink.setY(upLink.getY() - 9);
+                        upLink.setY(upLink.getY() - 7);
                     if (downLink != null)
-                        downLink.setY(downLink.getY() - 9);
+                        downLink.setY(downLink.getY() - 7);
                     if (leftLink != null)
-                        leftLink.setY(leftLink.getY() - 9);
+                        leftLink.setY(leftLink.getY() - 7);
                     if (rightLink != null)
-                        rightLink.setY(rightLink.getY() - 9);
+                        rightLink.setY(rightLink.getY() - 7);
                 } else if (direction.equals("左")) {
                     this.setX(this.getX() + 9);
                     if (upLink != null)

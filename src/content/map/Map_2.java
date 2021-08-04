@@ -8,7 +8,7 @@ import java.awt.*;
 @IMap(mapName = "101号公路", DownLink = "未白镇")
 public class Map_2 extends MapBase{
 
-    private int x = 0;
+    private int x = -524;
     private int y = 0;
     private boolean positionInit = false;
 

@@ -8,8 +8,8 @@ import java.awt.*;
 @IMap(mapName = "未白镇", UpLink = "101号公路", RightLink = "map_3")
 public class Map_1 extends MapBase{
 
-    private int x = 0;
-    private int y = 0;
+    private int x = -524;
+    private int y = -524;
     private boolean positionInit = false;
 
     Image image = Common.getMapImage("wei_bai_zhen.png");

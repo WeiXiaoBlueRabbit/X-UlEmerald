@@ -1,5 +1,7 @@
 package content.menu;
 
+import content.GameState;
+
 import java.awt.*;
 
 class MenuItemPokemon extends MenuItem {
@@ -16,6 +18,11 @@ class MenuItemPokemon extends MenuItem {
 
     public void setShowInMenu(boolean showInMenu) {
         isShowInMenu = showInMenu;
+    }
+
+    @Override
+    public void setGameState() {
+        //GameState.setGameState(GameState.pokemonBag);
     }
 
     @Override

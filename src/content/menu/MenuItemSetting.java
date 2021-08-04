@@ -1,5 +1,7 @@
 package content.menu;
 
+import content.GameState;
+
 import java.awt.*;
 
 class MenuItemSetting extends MenuItem {
@@ -18,6 +20,10 @@ class MenuItemSetting extends MenuItem {
         isShowInMenu = showInMenu;
     }
 
+    @Override
+    public void setGameState() {
+        //GameState.setGameState(GameState.setting);
+    }
 
     @Override
     public void drawImage(Graphics g) {

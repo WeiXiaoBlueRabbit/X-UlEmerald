@@ -23,10 +23,10 @@ class MenuItemExit extends MenuItem {
     }
 
     @Override
-    public void drawImage(Graphics g) {
+    public void setGameState() {
         GameState.setGameState(GameState.field);
         Menu.menuList.removeAll(Menu.menuList);
         Keys.remove(KeyEvent.VK_ENTER);
-        //退出
     }
+
 }

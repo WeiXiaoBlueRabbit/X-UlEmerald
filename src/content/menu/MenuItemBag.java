@@ -1,5 +1,7 @@
 package content.menu;
 
+import content.GameState;
+
 import java.awt.*;
 
 class MenuItemBag extends MenuItem {
@@ -16,6 +18,11 @@ class MenuItemBag extends MenuItem {
 
     public void setShowInMenu(boolean showInMenu) {
         isShowInMenu = showInMenu;
+    }
+
+    @Override
+    public void setGameState() {
+        //GameState.setGameState(GameState.itemBag);
     }
 
     @Override

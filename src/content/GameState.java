@@ -9,6 +9,8 @@ public class GameState {
     public static boolean isInItemBag = false;//打开物品背包
     public static boolean isInPokemonBag = false;//打开宝可梦背包
     public static boolean isInAtlas = false;//查看图鉴
+    public static boolean isInPlayerInfo = false;//查看玩家信息
+    public static boolean isInSetting = false;//打开设置
     public static boolean isInDialogue = false;//对话中
 
     public static final int start = 1;
@@ -18,7 +20,9 @@ public class GameState {
     public static final int itemBag = 5;
     public static final int pokemonBag = 6;
     public static final int atlas = 7;
-    public static final int dialogue = 8;
+    public static final int playerInfo = 8;
+    public static final int setting = 9;
+    public static final int dialogue = 10;
 
     public static void setGameState(int state){
         switch (state){
@@ -31,6 +35,8 @@ public class GameState {
                 isInItemBag = false;
                 isInPokemonBag = false;
                 isInAtlas = false;
+                isInPlayerInfo = false;
+                isInSetting = false;
                 isInDialogue = false;
                 break;
             case field:
@@ -43,6 +49,8 @@ public class GameState {
                 isInItemBag = false;
                 isInPokemonBag = false;
                 isInAtlas = false;
+                isInPlayerInfo = false;
+                isInSetting = false;
                 isInDialogue = false;
                 break;
             case battle:
@@ -55,6 +63,8 @@ public class GameState {
                 isInItemBag = false;
                 isInPokemonBag = false;
                 isInAtlas = false;
+                isInPlayerInfo = false;
+                isInSetting = false;
                 isInDialogue = false;
                 break;
             case menu:
@@ -67,6 +77,8 @@ public class GameState {
                 isInItemBag = false;
                 isInPokemonBag = false;
                 isInAtlas = false;
+                isInPlayerInfo = false;
+                isInSetting = false;
                 isInDialogue = false;
                 break;
             case itemBag:
@@ -79,6 +91,8 @@ public class GameState {
 
                 isInPokemonBag = false;
                 isInAtlas = false;
+                isInPlayerInfo = false;
+                isInSetting = false;
                 isInDialogue = false;
                 break;
             case pokemonBag:
@@ -91,6 +105,8 @@ public class GameState {
                 isInPokemonBag = true;
 
                 isInAtlas = false;
+                isInPlayerInfo = false;
+                isInSetting = false;
                 isInDialogue = false;
                 break;
             case atlas:
@@ -103,6 +119,36 @@ public class GameState {
 
                 isInAtlas = true;
 
+                isInPlayerInfo = false;
+                isInSetting = false;
+                isInDialogue = false;
+                break;
+            case playerInfo:
+                isInStart = false;
+                isInField = false;
+                isInBattle = false;
+                isInMenu = false;
+                isInItemBag = false;
+                isInPokemonBag = false;
+                isInAtlas = false;
+
+                isInPlayerInfo = true;
+
+                isInSetting = false;
+                isInDialogue = false;
+                break;
+            case setting:
+                isInStart = false;
+                isInField = false;
+                isInBattle = false;
+                isInMenu = false;
+                isInItemBag = false;
+                isInPokemonBag = false;
+                isInAtlas = false;
+                isInPlayerInfo = false;
+
+                isInSetting = true;
+
                 isInDialogue = false;
                 break;
             case dialogue:
@@ -113,6 +159,8 @@ public class GameState {
                 isInItemBag = false;
                 isInPokemonBag = false;
                 isInAtlas = false;
+                isInPlayerInfo = false;
+                isInSetting = false;
 
                 isInDialogue = true;
                 break;

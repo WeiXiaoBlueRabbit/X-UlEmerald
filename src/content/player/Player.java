@@ -19,7 +19,7 @@ public class Player extends EntityAttribute {
     * 玩家初始位置
     * */
     public Player() {
-        super(100, 100);
+        super(785, 230);
         this.playerState = new PlayerState();
     }
 

@@ -42,14 +42,12 @@ public class Menu implements IDrawImage {
 
     public static List<MenuItem> menuList;
     public static final MenuItemAtlas atlas = new MenuItemAtlas(true);
-    public static final MenuItemPokemon pokemon = new MenuItemPokemon(false);
+    public static final MenuItemPokemon pokemon = new MenuItemPokemon(true);
     public static final MenuItemBag bag = new MenuItemBag(true);
     public static final MenuItemPlayer player = new MenuItemPlayer(true);
     public static final MenuItemSave save = new MenuItemSave(true);
     public static final MenuItemSetting setting = new MenuItemSetting(true);
     public static final MenuItemExit exit = new MenuItemExit(true);
-
-    Graphics g;
 
     int x = 1335;
     int y = 6;
@@ -66,7 +64,6 @@ public class Menu implements IDrawImage {
 
     @Override
     public void drawImage(Graphics g) {
-        this.g = g;
         if (GameState.isInField && Keys.ENTER.press()) {
             GameState.setGameState(GameState.menu);
 
@@ -172,34 +169,33 @@ public class Menu implements IDrawImage {
             }
 
             if (Keys.Z.press()){
-                System.out.println(menuList);
                 switch (selectIndex){
                     case 1:
-                        menuList.get(0).drawImage(this.g);
+                        menuList.get(0).setGameState();
                         break;
 
                     case 2:
-                        menuList.get(1).drawImage(this.g);
+                        menuList.get(1).setGameState();
                         break;
 
                     case 3:
-                        menuList.get(2).drawImage(this.g);
+                        menuList.get(2).setGameState();
                         break;
 
                     case 4:
-                        menuList.get(3).drawImage(this.g);
+                        menuList.get(3).setGameState();
                         break;
 
                     case 5:
-                        menuList.get(4).drawImage(this.g);
+                        menuList.get(4).setGameState();
                         break;
 
                     case 6:
-                        menuList.get(5).drawImage(this.g);
+                        menuList.get(5).setGameState();
                         break;
 
                     case 7:
-                        menuList.get(6).drawImage(this.g);
+                        menuList.get(6).setGameState();
                         break;
                     default:
                         break;

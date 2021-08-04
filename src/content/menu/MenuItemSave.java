@@ -19,7 +19,7 @@ class MenuItemSave extends MenuItem {
     }
 
     @Override
-    public void drawImage(Graphics g) {
+    public void setGameState() {
 
     }
 }
