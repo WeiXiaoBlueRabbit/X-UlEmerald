@@ -15,15 +15,15 @@ import content.player.Player;
 
 public class GameFrame extends JFrame {
 
+    //获取整个屏幕大小
+    public static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+
     //创建可视化窗体
     public GameFrame(){
 
         this.setTitle("poke");  //窗口标题
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  //窗体退出方式
         //this.setResizable(false);//固定窗体
-
-        //获取整个屏幕大小
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
         //获取屏幕边界，其中的bottom为底部任务栏高度
         Insets screenInsets = Toolkit.getDefaultToolkit().getScreenInsets(this.getGraphicsConfiguration());
@@ -43,6 +43,12 @@ public class GameFrame extends JFrame {
         all.add(player);
         all.add(Constant.gameContentLoader);
         all.add(Menu.menu);
+
+        all.add(Menu.atlas);//添加图鉴渲染
+        all.add(Menu.pokemon);//添加宝可梦背包渲染
+        all.add(Menu.bag);//添加物品背包渲染
+        all.add(Menu.player);//添加玩家渲染
+        all.add(Menu.setting);//添加设置渲染
 
         IDrawImage[] allImage = new IDrawImage[all.size()];
         all.toArray(allImage);
