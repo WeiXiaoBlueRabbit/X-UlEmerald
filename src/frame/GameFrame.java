@@ -41,6 +41,7 @@ public class GameFrame extends JFrame {
 /************************下面这些不用管 *********************************************/
         List<IDrawImage> all = Constant.mapList;
         all.add(player);
+        all.add(Player.player_2);
         all.add(Constant.gameContentLoader);
         all.add(Menu.menu);
 

@@ -104,7 +104,6 @@ public class MapBase implements IDrawImage {
     public void mapMove() {
 
         MapBase[] allMap = Constant.gameContentLoader.allMap;
-        System.out.println("x = " + this.getX() + " y = " + this.getY());
 
         IMap map = this.getClass().getAnnotation(IMap.class);
 
@@ -112,16 +111,25 @@ public class MapBase implements IDrawImage {
             if (map.mapName().equals(Player.player.getPlayerLocation())) {
                 if (!isMoving()) {
                     if (Keys.UP.press() && !Keys.LEFT.press() && !Keys.RIGHT.press()) {
-                        direction = "上";
+                        Player.player.setCollisionBox(Player.player.getX(),Player.player.getY() - 30);
+                        if (!Player.player.getCollisionBox().intersects(Player.player_2.getCollisionBox()))
+                            direction = "上";
                     } else if (Keys.DOWN.press() && !Keys.LEFT.press() && !Keys.RIGHT.press()) {
-                        direction = "下";
+                        Player.player.setCollisionBox(Player.player.getX(),Player.player.getY() + 30);
+                        if (!Player.player.getCollisionBox().intersects(Player.player_2.getCollisionBox()))
+                            direction = "下";
                     } else if (Keys.LEFT.press()) {
-                        direction = "左";
+                        Player.player.setCollisionBox(Player.player.getX() - 60,Player.player.getY());
+                        if (!Player.player.getCollisionBox().intersects(Player.player_2.getCollisionBox()))
+                            direction = "左";
                     } else if (Keys.RIGHT.press()) {
-                        direction = "右";
+                        Player.player.setCollisionBox(Player.player.getX() + 60,Player.player.getY());
+                        if (!Player.player.getCollisionBox().intersects(Player.player_2.getCollisionBox()))
+                            direction = "右";
                     }
                 }
                 doMoving();
+                System.out.println(map.mapName() + "  " + "x = " + this.getX() + " y = " + this.getY());
             }
 
             if (!map.UpLink().equals("null")) {
@@ -130,8 +138,7 @@ public class MapBase implements IDrawImage {
                     if (!ann.mapName().equals(map.UpLink()))
                         continue;
                     upLink = anMap;
-
-                    //doMoving(anMap);
+                    System.out.println(ann.mapName() + "  " + "x = " + anMap.getX() + " y = " + anMap.getY());
                 }
             }
 
@@ -142,7 +149,7 @@ public class MapBase implements IDrawImage {
                         continue;
                     downLink = anMap;
 
-                    //doMoving(anMap);
+                    System.out.println(ann.mapName() + "  " + "x = " + anMap.getX() + " y = " + anMap.getY());
                 }
             }
 
@@ -153,7 +160,7 @@ public class MapBase implements IDrawImage {
                         continue;
                     leftLink = anMap;
 
-                    //doMoving(anMap);
+                    System.out.println(ann.mapName() + "  " + "x = " + anMap.getX() + " y = " + anMap.getY());
                 }
             }
 
@@ -164,7 +171,7 @@ public class MapBase implements IDrawImage {
                         continue;
                     rightLink = anMap;
 
-                    //doMoving(anMap);
+                    System.out.println(ann.mapName() + "  " + "x = " + anMap.getX() + " y = " + anMap.getY());
                 }
             }
         }
@@ -184,27 +191,30 @@ public class MapBase implements IDrawImage {
 
             if (moving == 14) {
                 if (direction.equals("上")) {
-                    this.setY(this.getY() + 3);
+                    this.setY(this.getY() + 2);
+                    Player.player_2.setY(Player.player_2.getY() + 2);
                     if (upLink != null)
-                        upLink.setY(upLink.getY() + 3);
+                        upLink.setY(upLink.getY() + 2);
                     if (downLink != null)
-                        downLink.setY(downLink.getY() + 3);
+                        downLink.setY(downLink.getY() + 2);
                     if (leftLink != null)
-                        leftLink.setY(leftLink.getY() + 3);
+                        leftLink.setY(leftLink.getY() + 2);
                     if (rightLink != null)
-                        rightLink.setY(rightLink.getY() + 3);
+                        rightLink.setY(rightLink.getY() + 2);
                 } else if (direction.equals("下")) {
-                    this.setY(this.getY() - 3);
+                    this.setY(this.getY() - 2);
+                    Player.player_2.setY(Player.player_2.getY() - 2);
                     if (upLink != null)
-                        upLink.setY(upLink.getY() - 3);
+                        upLink.setY(upLink.getY() - 2);
                     if (downLink != null)
-                        downLink.setY(downLink.getY() - 3);
+                        downLink.setY(downLink.getY() - 2);
                     if (leftLink != null)
-                        leftLink.setY(leftLink.getY() - 3);
+                        leftLink.setY(leftLink.getY() - 2);
                     if (rightLink != null)
-                        rightLink.setY(rightLink.getY() - 3);
+                        rightLink.setY(rightLink.getY() - 2);
                 } else if (direction.equals("左")) {
                     this.setX(this.getX() + 5);
+                    Player.player_2.setX(Player.player_2.getX() + 5);
                     if (upLink != null)
                         upLink.setX(upLink.getX() + 5);
                     if (downLink != null)
@@ -215,6 +225,7 @@ public class MapBase implements IDrawImage {
                         rightLink.setX(rightLink.getX() + 5);
                 } else if (direction.equals("右")) {
                     this.setX(this.getX() - 5);
+                    Player.player_2.setX(Player.player_2.getX() - 5);
                     if (upLink != null)
                         upLink.setX(upLink.getX() - 5);
                     if (downLink != null)
@@ -227,6 +238,7 @@ public class MapBase implements IDrawImage {
             } else {
                 if (direction.equals("上")) {
                     this.setY(this.getY() + 7);
+                    Player.player_2.setY(Player.player_2.getY() + 7);
                     if (upLink != null)
                         upLink.setY(upLink.getY() + 7);
                     if (downLink != null)
@@ -237,6 +249,7 @@ public class MapBase implements IDrawImage {
                         rightLink.setY(rightLink.getY() + 7);
                 } else if (direction.equals("下")) {
                     this.setY(this.getY() - 7);
+                    Player.player_2.setY(Player.player_2.getY() - 7);
                     if (upLink != null)
                         upLink.setY(upLink.getY() - 7);
                     if (downLink != null)
@@ -247,6 +260,7 @@ public class MapBase implements IDrawImage {
                         rightLink.setY(rightLink.getY() - 7);
                 } else if (direction.equals("左")) {
                     this.setX(this.getX() + 9);
+                    Player.player_2.setX(Player.player_2.getX() + 9);
                     if (upLink != null)
                         upLink.setX(upLink.getX() + 9);
                     if (downLink != null)
@@ -257,6 +271,7 @@ public class MapBase implements IDrawImage {
                         rightLink.setX(rightLink.getX() + 9);
                 } else if (direction.equals("右")) {
                     this.setX(this.getX() - 9);
+                    Player.player_2.setX(Player.player_2.getX() - 9);
                     if (upLink != null)
                         upLink.setX(upLink.getX() - 9);
                     if (downLink != null)
@@ -273,6 +288,7 @@ public class MapBase implements IDrawImage {
         }
         else {
             moving = 0;
+            direction = "无";
             this.mapMove();
         }
     }

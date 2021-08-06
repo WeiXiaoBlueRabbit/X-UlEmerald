@@ -7,19 +7,22 @@ import frame.Keys;
 
 import java.awt.*;
 
-@IElement(value = "player.png", width = 130, height = 145)
+@IElement(value = "player.png", width = 131, height = 145)
 public class Player extends EntityAttribute {
 
     protected PlayerState playerState;//玩家状态 (走路、跑步、骑车)
     protected String playerLocation;//玩家处于哪个地点
+    protected Rectangle CollisionBox;
 
     //创建玩家实例
-    public static Player player = new Player();
+    public static Player player = new Player(786,232);
+    public static Player player_2 = new Player(917,232);
     /**
     * 玩家初始位置
     * */
-    public Player() {
-        super(785, 230);
+    public Player(int x, int y) {
+        super(x,y);
+        this.setCollisionBox(x,y);
         this.playerState = new PlayerState();
     }
 
@@ -29,6 +32,14 @@ public class Player extends EntityAttribute {
 
     public void setPlayerLocation(String playerLocation) {
         this.playerLocation = playerLocation;
+    }
+
+    public void setCollisionBox(int x,int y){
+        CollisionBox = new Rectangle(x + 25,y + 25,this.width - 50,this.height - 50);
+    }
+
+    public Rectangle getCollisionBox(){
+        return CollisionBox;
     }
 
     public PlayerState getPlayerState() {
@@ -68,6 +79,18 @@ public class Player extends EntityAttribute {
     @Override
     protected void yMove() {
 
+    }
+
+    @Override
+    public void setX(int x) {
+        this.setCollisionBox(x,this.y);
+        super.setX(x);
+    }
+
+    @Override
+    public void setY(int y) {
+        this.setCollisionBox(this.x,y);
+        super.setY(y);
     }
 
     @Override
