@@ -22,6 +22,7 @@ public class MapBase implements IDrawImage {
     private RewardBalls ball_1;
     private int x,y;
     private int moving;
+    private boolean isRunning = false;
     private String direction = "无";
 
     private MapBase upLink = null;
@@ -182,14 +183,24 @@ public class MapBase implements IDrawImage {
         return false;
     }
 
+    /***
+     * 上下一格 = 100
+     * 左右一格 = 131
+     */
     public void doMoving() {
         if (direction.equals("无"))
             return;
 
-        if (moving <= 14) {
+        if (0 == moving) {
+            if (Keys.X.press())
+                isRunning = true;
+            else isRunning = false;
+        }
+
+        if (moving < 15 && !isRunning) {
             moving++;
 
-            if (moving == 14) {
+            if (moving == 15) {
                 if (direction.equals("上")) {
                     this.setY(this.getY() + 2);
                     Player.player_2.setY(Player.player_2.getY() + 2);
@@ -282,11 +293,107 @@ public class MapBase implements IDrawImage {
                         rightLink.setX(rightLink.getX() - 9);
                 }
             }
+        } else if (moving < 8 && isRunning) {
+            moving++;
+
+            if (moving == 8) {
+                if (direction.equals("上")) {
+                    this.setY(this.getY() + 2);
+                    Player.player_2.setY(Player.player_2.getY() + 2);
+                    if (upLink != null)
+                        upLink.setY(upLink.getY() + 2);
+                    if (downLink != null)
+                        downLink.setY(downLink.getY() + 2);
+                    if (leftLink != null)
+                        leftLink.setY(leftLink.getY() + 2);
+                    if (rightLink != null)
+                        rightLink.setY(rightLink.getY() + 2);
+                } else if (direction.equals("下")) {
+                    this.setY(this.getY() - 2);
+                    Player.player_2.setY(Player.player_2.getY() - 2);
+                    if (upLink != null)
+                        upLink.setY(upLink.getY() - 2);
+                    if (downLink != null)
+                        downLink.setY(downLink.getY() - 2);
+                    if (leftLink != null)
+                        leftLink.setY(leftLink.getY() - 2);
+                    if (rightLink != null)
+                        rightLink.setY(rightLink.getY() - 2);
+                } else if (direction.equals("左")) {
+                    this.setX(this.getX() + 5);
+                    Player.player_2.setX(Player.player_2.getX() + 5);
+                    if (upLink != null)
+                        upLink.setX(upLink.getX() + 5);
+                    if (downLink != null)
+                        downLink.setX(downLink.getX() + 5);
+                    if (leftLink != null)
+                        leftLink.setX(leftLink.getX() + 5);
+                    if (rightLink != null)
+                        rightLink.setX(rightLink.getX() + 5);
+                } else if (direction.equals("右")) {
+                    this.setX(this.getX() - 5);
+                    Player.player_2.setX(Player.player_2.getX() - 5);
+                    if (upLink != null)
+                        upLink.setX(upLink.getX() - 5);
+                    if (downLink != null)
+                        downLink.setX(downLink.getX() - 5);
+                    if (leftLink != null)
+                        leftLink.setX(leftLink.getX() - 5);
+                    if (rightLink != null)
+                        rightLink.setX(rightLink.getX() - 5);
+                }
+            } else {
+                if (direction.equals("上")) {
+                    this.setY(this.getY() + 14);
+                    Player.player_2.setY(Player.player_2.getY() + 14);
+                    if (upLink != null)
+                        upLink.setY(upLink.getY() + 14);
+                    if (downLink != null)
+                        downLink.setY(downLink.getY() + 14);
+                    if (leftLink != null)
+                        leftLink.setY(leftLink.getY() + 14);
+                    if (rightLink != null)
+                        rightLink.setY(rightLink.getY() + 14);
+                } else if (direction.equals("下")) {
+                    this.setY(this.getY() - 14);
+                    Player.player_2.setY(Player.player_2.getY() - 14);
+                    if (upLink != null)
+                        upLink.setY(upLink.getY() - 14);
+                    if (downLink != null)
+                        downLink.setY(downLink.getY() - 14);
+                    if (leftLink != null)
+                        leftLink.setY(leftLink.getY() - 14);
+                    if (rightLink != null)
+                        rightLink.setY(rightLink.getY() - 14);
+                } else if (direction.equals("左")) {
+                    this.setX(this.getX() + 18);
+                    Player.player_2.setX(Player.player_2.getX() + 18);
+                    if (upLink != null)
+                        upLink.setX(upLink.getX() + 18);
+                    if (downLink != null)
+                        downLink.setX(downLink.getX() + 18);
+                    if (leftLink != null)
+                        leftLink.setX(leftLink.getX() + 18);
+                    if (rightLink != null)
+                        rightLink.setX(rightLink.getX() + 18);
+                } else if (direction.equals("右")) {
+                    this.setX(this.getX() - 18);
+                    Player.player_2.setX(Player.player_2.getX() - 18);
+                    if (upLink != null)
+                        upLink.setX(upLink.getX() - 18);
+                    if (downLink != null)
+                        downLink.setX(downLink.getX() - 18);
+                    if (leftLink != null)
+                        leftLink.setX(leftLink.getX() - 18);
+                    if (rightLink != null)
+                        rightLink.setX(rightLink.getX() - 18);
+                }
+            }
+
         } else if (!Keys.UP.press() && !Keys.DOWN.press() && !Keys.LEFT.press() && !Keys.RIGHT.press()){
             moving = 0;
             direction = "无";
-        }
-        else {
+        } else {
             moving = 0;
             direction = "无";
             this.mapMove();
