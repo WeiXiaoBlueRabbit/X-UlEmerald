@@ -112,25 +112,32 @@ public class MapBase implements IDrawImage {
             if (map.mapName().equals(Player.player.getPlayerLocation())) {
                 if (!isMoving()) {
                     if (Keys.UP.press() && !Keys.LEFT.press() && !Keys.RIGHT.press()) {
-                        Player.player.setCollisionBox(Player.player.getX(),Player.player.getY() - 30);
-                        if (!Player.player.getCollisionBox().intersects(Player.player_2.getCollisionBox()))
+                        Player.player.setCollisionBox(Player.player.getX(),Player.player.getY() - 99);
+                        if (!Player.player.getCollisionBox().intersects(Player.player_2.getCollisionBox())
+                                && !this.isCollision() || this.isTrap())
                             direction = "上";
                     } else if (Keys.DOWN.press() && !Keys.LEFT.press() && !Keys.RIGHT.press()) {
-                        Player.player.setCollisionBox(Player.player.getX(),Player.player.getY() + 30);
-                        if (!Player.player.getCollisionBox().intersects(Player.player_2.getCollisionBox()))
+                        Player.player.setCollisionBox(Player.player.getX(),Player.player.getY() + 99);
+                        if (!Player.player.getCollisionBox().intersects(Player.player_2.getCollisionBox())
+                                && !this.isCollision() || this.isTrap())
                             direction = "下";
                     } else if (Keys.LEFT.press()) {
-                        Player.player.setCollisionBox(Player.player.getX() - 60,Player.player.getY());
-                        if (!Player.player.getCollisionBox().intersects(Player.player_2.getCollisionBox()))
+                        Player.player.setCollisionBox(Player.player.getX() - 130,Player.player.getY());
+                        if (!Player.player.getCollisionBox().intersects(Player.player_2.getCollisionBox())
+                                && !this.isCollision() || this.isTrap())
                             direction = "左";
                     } else if (Keys.RIGHT.press()) {
-                        Player.player.setCollisionBox(Player.player.getX() + 60,Player.player.getY());
-                        if (!Player.player.getCollisionBox().intersects(Player.player_2.getCollisionBox()))
+                        Player.player.setCollisionBox(Player.player.getX() + 130,Player.player.getY());
+                        if (!Player.player.getCollisionBox().intersects(Player.player_2.getCollisionBox())
+                                && !this.isCollision() || this.isTrap())
                             direction = "右";
                     }
                 }
                 doMoving();
-                System.out.println(map.mapName() + "  " + "x = " + this.getX() + " y = " + this.getY());
+                //System.out.println(map.mapName() + "  " + "x = " + this.getX() + " y = " + this.getY());
+                System.out.println(this.getCollision().getBounds());
+                System.out.println(Player.player.getCollisionBox().getBounds());
+                System.out.println(this.isTrap());
             }
 
             if (!map.UpLink().equals("null")) {
@@ -139,7 +146,6 @@ public class MapBase implements IDrawImage {
                     if (!ann.mapName().equals(map.UpLink()))
                         continue;
                     upLink = anMap;
-                    System.out.println(ann.mapName() + "  " + "x = " + anMap.getX() + " y = " + anMap.getY());
                 }
             }
 
@@ -150,7 +156,6 @@ public class MapBase implements IDrawImage {
                         continue;
                     downLink = anMap;
 
-                    System.out.println(ann.mapName() + "  " + "x = " + anMap.getX() + " y = " + anMap.getY());
                 }
             }
 
@@ -161,7 +166,6 @@ public class MapBase implements IDrawImage {
                         continue;
                     leftLink = anMap;
 
-                    System.out.println(ann.mapName() + "  " + "x = " + anMap.getX() + " y = " + anMap.getY());
                 }
             }
 
@@ -172,7 +176,6 @@ public class MapBase implements IDrawImage {
                         continue;
                     rightLink = anMap;
 
-                    System.out.println(ann.mapName() + "  " + "x = " + anMap.getX() + " y = " + anMap.getY());
                 }
             }
         }
@@ -420,8 +423,18 @@ public class MapBase implements IDrawImage {
         return false;
     }
 
-    public void positionInit(){
+    public void positionInit(){}
 
+    public boolean isCollision(){
+        return false;
+    }
+
+    public boolean isTrap(){
+        return false;
+    }
+
+    public Rectangle getCollision(){
+        return null;
     }
 
     public Image getImage(){

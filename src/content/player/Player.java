@@ -15,8 +15,8 @@ public class Player extends EntityAttribute {
     protected Rectangle CollisionBox;
 
     //创建玩家实例
-    public static Player player = new Player(786,232);
-    public static Player player_2 = new Player(917,232);
+    public static Player player = new Player(786,256);
+    public static Player player_2 = new Player(917,256);
     /**
     * 玩家初始位置
     * */
