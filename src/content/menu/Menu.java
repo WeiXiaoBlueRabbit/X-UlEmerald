@@ -60,6 +60,7 @@ public class Menu implements IDrawImage {
 
     public Menu(){
         menuList = new ArrayList<>();
+        selectIndex = 1;
     }
 
     @Override
@@ -75,7 +76,6 @@ public class Menu implements IDrawImage {
             menuList.add(setting);
             menuList.add(exit);
 
-            selectIndex = 1;
             Keys.remove(KeyEvent.VK_ENTER);
         }
         else if (GameState.isInMenu && Keys.ENTER.press() || GameState.isInMenu && Keys.X.press()) {

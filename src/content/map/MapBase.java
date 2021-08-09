@@ -6,6 +6,7 @@ import content.GameState;
 import content.map.common.RewardBalls;
 import content.player.Player;
 import frame.Constant;
+import frame.GameFrame;
 import frame.Keys;
 
 import java.awt.*;
@@ -36,7 +37,10 @@ public class MapBase implements IDrawImage {
 
         IMap map = this.getClass().getAnnotation(IMap.class);
         if (map.mapName().equals(Player.player.getPlayerLocation())){
-            g.drawImage(this.getImage(), this.getX(), this.getY(), map.width(), map.height(), null);
+
+                g.drawImage(this.getImage(), this.getX(), this.getY(),
+                        map.width() + (int)(Constant.scale_width*1.443) ,
+                        map.height() + (int)(Constant.scale_height*1.942) , null);
 
             //绘制四个方向连接的地图，我只能想到这样了，如果有其他好方法的话请将其替换
             if (!map.UpLink().equals("null")){

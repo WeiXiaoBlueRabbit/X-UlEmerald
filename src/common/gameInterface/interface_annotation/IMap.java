@@ -22,7 +22,7 @@ public @interface IMap {
 
     int y() default 0;
 
-    int width() default 2620;
+    int width() default 960;//3倍
 
-    int height() default 2000;
+    int height() default 960;
 }

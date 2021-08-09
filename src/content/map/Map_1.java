@@ -6,11 +6,11 @@ import frame.Common;
 
 import java.awt.*;
 
-@IMap(mapName = "未白镇", UpLink = "101号公路", RightLink = "map_3")
+@IMap(mapName = "未白镇"/*, UpLink = "101号公路", RightLink = "map_3"*/)
 public class Map_1 extends MapBase{
 
-    private int x = -524;
-    private int y = -500;
+    private int x = 0;
+    private int y = 0;
     private boolean positionInit = false;
 
     Image image = Common.getMapImage("wei_bai_zhen.png");
@@ -35,15 +35,7 @@ public class Map_1 extends MapBase{
         this.positionInit = true;
     }
 
-    @Override
-    public boolean isCollision() {
-        return buildings_1.intersects(Player.player.getCollisionBox());
-    }
 
-    @Override
-    public boolean isTrap() {
-        return buildings_1_door.intersects(Player.player.getCollisionBox());
-    }
 
     @Override
     public Rectangle getCollision() {

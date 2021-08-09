@@ -9,6 +9,8 @@ import java.util.List;
 public abstract class Constant {
 
     public static List<IDrawImage> mapList;
+    public static int scale_width;
+    public static int scale_height;
     /**由于会用到src/content/map/generator/MapGenerator.java方法中创建出的地图实例
      * 而GameContentLoader()方法又会运行MapGenerator.java中创建地图实例的方法
      * 所以在这里先new一份GameContentLoader来给其他需要用到地图实例的方法来使用

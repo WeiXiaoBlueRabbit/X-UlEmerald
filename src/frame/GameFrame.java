@@ -2,6 +2,8 @@ package frame;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.List;
@@ -27,7 +29,7 @@ public class GameFrame extends JFrame {
 
         //获取屏幕边界，其中的bottom为底部任务栏高度
         Insets screenInsets = Toolkit.getDefaultToolkit().getScreenInsets(this.getGraphicsConfiguration());
-        this.setSize(screenSize.width,screenSize.height - screenInsets.bottom);  //窗体大小
+        this.setSize(688,544);  //窗体大小  43  34
 
         this.init();
 
@@ -61,6 +63,32 @@ public class GameFrame extends JFrame {
         //刷新面板（重新绘制）
         Common.task(5, () -> {
             panel.repaint();
+        });
+
+        this.addComponentListener(new ComponentListener() {
+            @Override
+            public void componentResized(ComponentEvent e) {
+                int width = getWidth();
+                Constant.scale_width = width - 688;
+
+                int height = getHeight();
+                Constant.scale_height = height - 544;
+            }
+
+            @Override
+            public void componentMoved(ComponentEvent e) {
+
+            }
+
+            @Override
+            public void componentShown(ComponentEvent e) {
+
+            }
+
+            @Override
+            public void componentHidden(ComponentEvent e) {
+
+            }
         });
 
         /*在窗体中添加键盘监听事件，直接传入一个键盘监听实例
